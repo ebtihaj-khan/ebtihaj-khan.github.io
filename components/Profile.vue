@@ -86,6 +86,7 @@
               size="lg"
               icon="i-heroicons-envelope"
               class="font-semibold"
+              @click="openEmail"
             >
               Let's Connect
             </UButton>
@@ -95,6 +96,7 @@
               size="lg"
               icon="i-heroicons-document-text"
               class="font-semibold"
+              @click="scrollToProjects"
             >
               View Projects
             </UButton>
@@ -104,3 +106,19 @@
     </div>
   </section>
 </template>
+
+<script setup>
+const openEmail = () => {
+  window.location.href = 'mailto:ebtihaj316@gmail.com?subject=Let\'s Connect - Product Management Opportunity'
+}
+
+const scrollToProjects = () => {
+  const projectsSection = document.getElementById('projects')
+  if (projectsSection) {
+    projectsSection.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
+</script>

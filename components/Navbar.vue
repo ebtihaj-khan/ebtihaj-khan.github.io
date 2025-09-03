@@ -50,6 +50,14 @@
           >
             <Icon name="mdi:medium" size="20" class="group-hover:scale-110 transition-transform duration-200" />
           </a>
+          <a 
+            href="https://github.com/ebtihaj-khan" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-200 group"
+          >
+            <Icon name="mdi:github" size="20" class="group-hover:scale-110 transition-transform duration-200" />
+          </a>
           <ThemeToggle />
         </div>
       </div>
@@ -97,6 +105,14 @@
             class="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
           >
             <Icon name="mdi:medium" size="24" />
+          </a>
+          <a 
+            href="https://github.com/ebtihaj-khan" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+          >
+            <Icon name="mdi:github" size="24" />
           </a>
           <ThemeToggle />
         </div>
