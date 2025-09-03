@@ -30,5 +30,5 @@ export default defineNuxtConfig({
     global: true,
     icons: ['heroicons', 'mdi']
   },
-  css: ['~/assets/css/main.css']
+
 })
