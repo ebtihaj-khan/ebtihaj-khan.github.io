@@ -21,15 +21,6 @@
               Email
             </UBadge>
           </a>
-          <UBadge 
-            color="green" 
-            variant="soft" 
-            size="sm"
-            class="cursor-default"
-          >
-            <Icon name="i-heroicons-phone" class="w-3 h-3 mr-1" />
-            +92 (332) 994-1575
-          </UBadge>
         </div>
         
         <!-- Social Links & Theme Toggle -->
@@ -84,10 +75,6 @@
               Email
             </UBadge>
           </a>
-          <UBadge color="green" variant="soft" size="sm">
-            <Icon name="i-heroicons-phone" class="w-3 h-3 mr-1" />
-            Call
-          </UBadge>
         </div>
         <div class="flex items-center justify-center gap-4">
           <a 
