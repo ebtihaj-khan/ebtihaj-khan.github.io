@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   app: {
-    baseURL: '/ebtihaj-khan.github.io/',
+    baseURL: '/',
     buildAssetsDir: '/_nuxt/',
     head: {
       meta: [
