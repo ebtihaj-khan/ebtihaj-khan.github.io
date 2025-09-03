@@ -49,23 +49,90 @@ const experience = [
 ]
 </script>
 <template>
-  <section class="my-8 md:my-12 xl:my-16"
-           id="experience">
-           <SectionTitle title="Experience" icon="briefcase" />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
-      <UCard v-for="item in experience"
-             :ui="{ divide: 'divide-none', background: 'bg-gray-100 dark:bg-gray-900', body: { base: 'text-sm print:text-xs', padding: 'p2' }, header: { padding: 'pb-0' }, ring: 'ring-0', shadow: 'shadow-none', }">
-        <template #header>
-          <div class="flex">
-            <h2 class="font-semibold flex-1">{{ item.organization }}</h2>
-            <UBadge color="white">{{ item.period }}</UBadge>
+  <section class="my-12 md:my-16 xl:my-20" id="experience">
+    <SectionTitle title="Experience" icon="i-heroicons-briefcase" />
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div 
+        v-for="(item, index) in experience" 
+        :key="index"
+        class="group relative"
+      >
+        <!-- Timeline Line for Desktop -->
+        <div v-if="index % 2 === 0" class="hidden lg:block absolute left-full top-0 w-px h-full bg-gradient-to-b from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800 transform translate-x-3"></div>
+        
+        <UCard 
+          class="h-full hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 transition-all duration-300 group-hover:-translate-y-1"
+          :ui="{ 
+            divide: 'divide-none', 
+            background: 'bg-white dark:bg-gray-800', 
+            body: { 
+              base: 'text-sm print:text-xs', 
+              padding: 'p-6' 
+            }, 
+            header: { 
+              padding: 'p-6 pb-4' 
+            }, 
+            ring: 'ring-1 ring-gray-200 dark:ring-gray-700', 
+            shadow: 'shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50',
+            rounded: 'rounded-2xl'
+          }"
+        >
+          <template #header>
+            <div class="space-y-3">
+              <!-- Organization & Period -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                  {{ item.organization }}
+                </h2>
+                <UBadge 
+                  color="blue" 
+                  variant="soft" 
+                  size="sm"
+                  class="self-start sm:self-center"
+                >
+                  {{ item.period }}
+                </UBadge>
+              </div>
+              
+              <!-- Designation -->
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                <span class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                  {{ item.designation }}
+                </span>
+              </div>
+            </div>
+          </template>
+          
+          <!-- Introduction -->
+          <div class="mb-6">
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+              {{ item.introduction }}
+            </p>
           </div>
-        </template>
-        <p class="mb-4">{{ item.introduction }}</p>
-        <ul class="list-disc ps-4">
-          <li v-for="contribution in item.contributions">{{ contribution }}</li>
-        </ul>
-      </UCard>
+          
+          <!-- Contributions -->
+          <div class="space-y-3">
+            <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+              <Icon name="i-heroicons-check-circle" class="w-4 h-4 text-green-500" />
+              Key Contributions
+            </h4>
+            <ul class="space-y-2">
+              <li 
+                v-for="(contribution, idx) in item.contributions" 
+                :key="idx"
+                class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400"
+              >
+                <div class="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                <span>{{ contribution }}</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Hover Effect Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        </UCard>
+      </div>
     </div>
   </section>
 </template>

@@ -47,26 +47,88 @@ const projects = [
 ]
 </script>
 <template>
-  <section id="projects" class="my-8 md:my-12 xl:my-16">
-    <SectionTitle title="Projects"
-                  icon="document-check" />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
-      <UCard v-for="item in projects"
-             :ui="{ divide: 'divide-none', background: 'bg-gray-100 dark:bg-gray-900', body: { base: 'text-sm print:text-xs' }, header: { padding: 'pb-0' }, ring: 'ring-0', shadow: 'shadow-none', }">
-        <template #header>
-          <h2 class="font-semibold col-span-8">{{ item.project }}</h2>
-          <div class="flex gap-1 mt-2 text-sm">
-            <span class="flex-1">{{ item.organization }}</span>
-            <UBadge color="white">{{ item.period }}</UBadge>
+  <section id="projects" class="my-12 md:my-16 xl:my-20">
+    <SectionTitle title="Projects" icon="i-heroicons-rocket-launch" />
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div 
+        v-for="(item, index) in projects" 
+        :key="index"
+        class="group"
+      >
+        <UCard 
+          class="h-full hover:shadow-xl hover:shadow-purple-500/10 dark:hover:shadow-purple-500/20 transition-all duration-300 group-hover:-translate-y-1"
+          :ui="{ 
+            divide: 'divide-none', 
+            background: 'bg-white dark:bg-gray-800', 
+            body: { 
+              base: 'text-sm print:text-xs', 
+              padding: 'p-6' 
+            }, 
+            header: { 
+              padding: 'p-6 pb-4' 
+            }, 
+            ring: 'ring-1 ring-gray-200 dark:ring-gray-700', 
+            shadow: 'shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50',
+            rounded: 'rounded-2xl'
+          }"
+        >
+          <template #header>
+            <div class="space-y-3">
+              <!-- Project Title & Organization -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200">
+                  {{ item.project }}
+                </h2>
+                <UBadge 
+                  color="purple" 
+                  variant="soft" 
+                  size="sm"
+                  class="self-start sm:self-center"
+                >
+                  {{ item.period }}
+                </UBadge>
+              </div>
+              
+              <!-- Organization -->
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                <span class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                  {{ item.organization }}
+                </span>
+              </div>
+            </div>
+          </template>
+          
+          <!-- Description -->
+          <div class="mb-6">
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+              {{ item.description }}
+            </p>
           </div>
-        </template>
-        <div class="mt-2">
-          <p class="text-gray-600">{{ item.description }}</p>
-          <ul v-if="item.bullets" class="mt-2 space-y-1 text-gray-600 pl-4">
-            <li v-for="(bullet, index) in item.bullets" :key="index" class="list-disc">{{ bullet }}</li>
-          </ul>
-        </div>
-      </UCard>
+          
+          <!-- Key Features -->
+          <div v-if="item.bullets" class="space-y-3">
+            <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+              <Icon name="i-heroicons-star" class="w-4 h-4 text-purple-500" />
+              Key Features
+            </h4>
+            <ul class="space-y-2">
+              <li 
+                v-for="(bullet, idx) in item.bullets" 
+                :key="idx"
+                class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400"
+              >
+                <div class="w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 flex-shrink-0"></div>
+                <span>{{ bullet }}</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Hover Effect Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        </UCard>
+      </div>
     </div>
   </section>
 </template>

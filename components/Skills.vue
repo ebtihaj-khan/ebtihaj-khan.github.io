@@ -73,20 +73,52 @@ const skills = {
   }
 </script>
 <template>
-  <section id="skills" class="my-8 md:my-12 xl:my-16 print:break-before-page">
-    <SectionTitle title="Skills" icon="bug-ant" />
-    <UCard
-           :ui="{ divide: 'divide-none', body: { padding: 'sm:p-4' }, background: 'bg-gray-100 dark:bg-gray-900', ring: 'ring-0', shadow: 'shadow-none', }">
-    <div class="grid grid-cols-12">
-      <template v-for="items, tech in skills">
-        <div class="col-span-2 font-semibold text-sm print:text-xs"> {{ tech }}: </div>
-        <div class="col-span-10">
-          <template v-for="item in items">
-            <UBadge color="white" class="whitespace-nowrap m-1">{{ item }}</UBadge>
-          </template>
-        </div>
-      </template>
+  <section id="skills" class="my-12 md:my-16 xl:my-20 print:break-before-page">
+    <SectionTitle title="Skills" icon="i-heroicons-cpu-chip" />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div 
+        v-for="(items, category) in skills" 
+        :key="category"
+        class="group"
+      >
+        <UCard 
+          class="h-full hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 transition-all duration-300 group-hover:-translate-y-1"
+          :ui="{ 
+            divide: 'divide-none', 
+            body: { padding: 'p-6' }, 
+            background: 'bg-white dark:bg-gray-800', 
+            ring: 'ring-1 ring-gray-200 dark:ring-gray-700', 
+            shadow: 'shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50',
+            rounded: 'rounded-2xl'
+          }"
+        >
+          <!-- Category Header -->
+          <div class="mb-4">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 flex items-center gap-2">
+              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              {{ category }}
+            </h3>
+          </div>
+          
+          <!-- Skills Grid -->
+          <div class="flex flex-wrap gap-2">
+            <UBadge 
+              v-for="skill in items" 
+              :key="skill"
+              color="blue" 
+              variant="soft" 
+              size="sm"
+              class="group-hover:scale-105 transition-transform duration-200"
+            >
+              {{ skill }}
+            </UBadge>
+          </div>
+          
+          <!-- Hover Effect Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        </UCard>
+      </div>
     </div>
-    </UCard>
   </section>
 </template>
