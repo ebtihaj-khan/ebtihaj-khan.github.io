@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: true,
+  ssr: false,
   app: {
-    baseURL: '/',
+    baseURL: '/ebtihaj-khan.github.io/',
     buildAssetsDir: '/_nuxt/',
     head: {
       meta: [
