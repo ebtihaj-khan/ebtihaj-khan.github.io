@@ -86,6 +86,9 @@
       </ol>
     </section>
 
+
+    <p class="partners"><span>Worked with</span> WHO, the Gates Foundation, Pakistan's National Emergency Operations Centre, Pathfinder International, the Government of Khyber Pakhtunkhwa, the Open Knowledge Foundation, and Foundation Health.</p>
+
     <!-- Now: integration map -->
     <section class="sect" id="now" aria-labelledby="now-h">
       <div class="sect__head">
@@ -110,6 +113,37 @@
       </ul>
     </section>
 
+
+    <!-- Playbook -->
+    <section class="sect" id="playbook" aria-labelledby="playbook-h">
+      <div class="sect__head">
+        <h2 id="playbook-h">How I run an integration</h2>
+        <p>Every partner integration follows the same five steps. Each example comes from a shipped project.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>Find where the partner breaks our pattern</h3>
+          <p>A new partner rarely fits the existing model. For the mail-order pharmacy, I found three breaks: the partner starts the flow, it rejects orders without a valid NDC, and it needs a new on-hold state.</p>
+        </li>
+        <li class="step">
+          <h3>Map every event, end to end</h3>
+          <p>I write out each message from prescription approval to shipment. The map shows engineering where to match patients, where to create orders, and which events update status.</p>
+        </li>
+        <li class="step">
+          <h3>Specify how it fails</h3>
+          <p>Webhook validation, idempotency, match failures, and ops alerts go into the PRD. For the forms service, jittered retries replaced a flat 30-second retry so failed submissions surface.</p>
+        </li>
+        <li class="step">
+          <h3>Prove parity before cutover</h3>
+          <p>When we replace a vendor, both systems run side by side. Daily reconciliation shows the data matches before the old system goes away.</p>
+        </li>
+        <li class="step">
+          <h3>Run launch readiness in production</h3>
+          <p>I write the launch plan, run place and cancel tests in production with the partner, and send stakeholders a daily status update until go-live.</p>
+        </li>
+      </ol>
+    </section>
+
     <!-- Decisions -->
     <section class="sect" id="calls" aria-labelledby="calls-h">
       <div class="sect__head">
@@ -127,7 +161,7 @@
         </details>
         <details class="call">
           <summary><span class="call__q">What happens when a prior authorization vendor has no coverage?</span><span class="call__a">Fall back</span></summary>
-          <p>Cencora goes first. On a no-coverage response, the request moves to CoverMyMeds. Payers without an electronic question set go to fax after a set window. Together the two vendors cover more than 85% of pharmacy-benefit payers.</p>
+          <p>The new vendor goes first. On a no-coverage response, the request moves to CoverMyMeds. Payers without an electronic question set go to fax after a set window. Together the two vendors cover more than 85% of pharmacy-benefit payers.</p>
         </details>
         <details class="call">
           <summary><span class="call__q">How do we leave a vendor without losing data?</span><span class="call__a">Run both</span></summary>
@@ -137,6 +171,36 @@
           <summary><span class="call__q">How do we build for a federal deadline?</span><span class="call__a">One library</span></summary>
           <p>CMS-0057-F brings a January 2027 compliance deadline. I planned one NCPDP library for prior authorization, RTPB, and formulary. Message builders hold no vendor logic. Only the transport client knows the vendor, so the next vendor costs less.</p>
         </details>
+      </div>
+    </section>
+
+
+    <!-- Case study -->
+    <section class="sect" id="case" aria-labelledby="case-h">
+      <div class="sect__head">
+        <h2 id="case-h">Case study: finding the children a campaign missed</h2>
+        <p>The Geographic Coverage Support System, built with WHO, NEOC, and the Gates Foundation from 2022 to 2024.</p>
+      </div>
+      <div class="case">
+        <dl class="case__facts">
+          <div><dt>Problem</dt><dd>A polio campaign must reach every child. Supervisors could not see which settlements a team never reached. A review to find missed settlements took about six hours.</dd></div>
+          <div><dt>Users</dt><dd>69,000+ vaccinators, their supervisors, and WHO and NEOC campaign managers.</dd></div>
+          <div><dt>What I shipped</dt><dd>Digital boundaries for 6,000+ administrative areas, live team tracking, missed-settlement detection with geospatial QA, and supervisor dashboards. Later, an ML module that finds where teams start each day.</dd></div>
+          <div><dt>Result</dt><dd>The system found 15,800+ unvaccinated settlements. Follow-up campaigns vaccinated 5,000+ children there. WHO adopted it for polio campaign monitoring.</dd></div>
+        </dl>
+        <figure class="case__chart" aria-labelledby="case-cap">
+          <figcaption id="case-cap">Time to find missed settlements after a campaign</figcaption>
+          <div class="bar-row">
+            <span class="bar-label">Before</span>
+            <div class="bar-track"><div class="cbar cbar--before" style="--w: 100%"></div></div>
+            <span class="bar-value">~6 hours</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">With GCSS</span>
+            <div class="bar-track"><div class="cbar cbar--after" style="--w: 8.3%"></div></div>
+            <span class="bar-value">&lt; 30 min</span>
+          </div>
+        </figure>
       </div>
     </section>
 
@@ -386,6 +450,7 @@
     <section class="contact" id="contact" aria-labelledby="contact-h">
       <h2 id="contact-h">Have a hard integration or a field rollout?</h2>
       <p>I like problems where the standard is strict and the users are busy. Write to me.</p>
+      <p class="contact__open">Open to senior and technical product manager roles in health tech. Remote.</p>
       <div class="contact__row">
         <button class="copy" type="button" id="copy-email" data-email="ebtihaj316@gmail.com">
           <span class="copy__text">ebtihaj316@gmail.com</span>

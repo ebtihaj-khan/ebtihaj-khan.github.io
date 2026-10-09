@@ -28,7 +28,7 @@
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   $$('main > section[id]').forEach((el) => spy.observe(el));
-  const navFor = { top: '', now: 'now', calls: 'now', field: 'field', builds: 'field', career: 'career', toolkit: 'career', talks: 'career', education: 'career', contact: 'contact' };
+  const navFor = { top: '', now: 'now', playbook: 'now', calls: 'now', case: 'field', field: 'field', builds: 'field', career: 'career', toolkit: 'career', talks: 'career', education: 'career', contact: 'contact' };
 
   // Theme
   const themeBtn = $('#theme');
@@ -98,14 +98,14 @@
       points: ['Owned scoping end to end: pharmacy search, transfer messaging, and confirmation.', 'Expanded in-network reach for prescription transfers.'] },
     { id: 'amazon', name: 'Amazon Pharmacy', kind: 'rx', std: 'Fulfillment routing', status: 'Live',
       points: ['Defined routing rules, edge cases, and release checklists.', 'Shortened the fulfillment path for eligible e-prescriptions.'] },
-    { id: 'honeybee', name: 'Honeybee Health', kind: 'rx', std: 'Webhooks, NDC validation', status: 'Live',
+    { id: 'mailorder', name: 'Mail-order pharmacy partner', kind: 'rx', std: 'Webhooks, NDC validation', status: 'Live',
       points: ['Wrote the PRD around three breaks from our partner pattern: an inbound-first flow, hard NDC validation, and a new on-hold exception state.', 'Mapped the event lifecycle from prescription approval to shipment, with idempotent webhooks and match-failure alerts.', 'Delivered across about 24 merged PRs and ran go-live readiness with the customer.'] },
-    { id: 'cencora', name: 'Cencora ePA', kind: 'payer', std: 'NCPDP SCRIPT 2023', status: 'In build',
-      points: ['Added a second electronic prior authorization vendor next to CoverMyMeds.', 'Specified the four-message PA exchange and the appeal pair for denials.', 'Set routing: Cencora first, CoverMyMeds on no coverage, fax after a configurable window.'] },
+    { id: 'epa', name: 'Second ePA vendor', kind: 'payer', std: 'NCPDP SCRIPT 2023', status: 'In build',
+      points: ['Added a second electronic prior authorization vendor next to CoverMyMeds.', 'Specified the four-message PA exchange and the appeal pair for denials.', 'Set routing: the new vendor first, CoverMyMeds on no coverage, fax after a configurable window.'] },
     { id: 'ncpdp', name: 'NCPDP messaging layer', kind: 'payer', std: 'RTPB v13, Formulary and Benefit', status: 'Planned',
       points: ['Planned one vendor-agnostic library for prior authorization, real-time benefit checks, and formulary.', 'Routed batch formulary files through the compendia flat-file pipeline.', 'Driven by the CMS-0057-F deadline in January 2027.'] },
-    { id: 'availity', name: 'Availity', kind: 'payer', std: 'X12 278', status: 'In build',
-      points: ['Wrote the PRD for medical-benefit prior authorization on infusion and specialty drugs.', 'Specified real-time and batch paths, a response state machine, and config-driven payer rule packs.', 'Built the MVP payer scope from Availity’s own payer export.'] },
+    { id: 'clearinghouse', name: 'Medical PA clearinghouse', kind: 'payer', std: 'X12 278', status: 'In build',
+      points: ['Wrote the PRD for medical-benefit prior authorization on infusion and specialty drugs.', 'Specified real-time and batch paths, a response state machine, and config-driven payer rule packs.', 'Built the MVP payer scope from the clearinghouse’s own payer export.'] },
     { id: 'compendia', name: 'Drug compendia', kind: 'core', std: 'RxNorm, Medi-Span', status: 'In build',
       points: ['One translation service replaces five separate medication lookups.', 'RxCUI is the key. RxNorm runs in-house as flat files.', 'Medi-Span covers only therapeutic class and DEA schedule.'] },
     { id: 'tasks', name: 'Task platform', kind: 'core', std: 'Zoho Desk exit', status: 'Migrating',
@@ -200,7 +200,7 @@
     const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1;
     select(systems[(i + d + systems.length) % systems.length].id, true);
   });
-  active = 'cencora';
+  active = 'epa';
   systems.forEach((x) => x.btn.setAttribute('aria-pressed', String(x.id === active)));
   render(systems.find((s) => s.id === active));
   new ResizeObserver(layout).observe(map);
@@ -220,7 +220,7 @@
   const roleObs = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-seen'); });
   }, { rootMargin: '0px 0px -35% 0px' });
-  $$('.role').forEach((r) => roleObs.observe(r));
+  $$('.role, .case__chart').forEach((r) => roleObs.observe(r));
 
   // Copy email
   const copyBtn = $('#copy-email');
@@ -250,7 +250,9 @@
   const go = (id) => () => document.getElementById(id).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   const commands = [
     { label: 'What I work on now', hint: 'Section', run: go('now') },
+    { label: 'How I run an integration', hint: 'Section', run: go('playbook') },
     { label: 'Calls I made', hint: 'Section', run: go('calls') },
+    { label: 'Case study: GCSS', hint: 'Section', run: go('case') },
     { label: 'Field work', hint: 'Section', run: go('field') },
     { label: 'Prototypes', hint: 'Section', run: go('builds') },
     { label: 'Career', hint: 'Section', run: go('career') },
