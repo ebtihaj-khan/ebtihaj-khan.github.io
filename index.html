@@ -1,28 +1,415 @@
-<!DOCTYPE html><html  data-capo=""><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/_nuxt/entry.CFpK1uwv.css" crossorigin>
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DVkxZlI2.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/_t8IpVvg.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/D-BB9s0y.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/DgZVhwD0.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/DlAUqK2U.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/D2AyzR4z.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/C8cWOMGV.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cmbe7xYr.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/DaLO-UGm.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CGkoqL-s.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/Dw1NdMws.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/KzcRJ6EC.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/BaVG6HUf.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/Bl6c03PH.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfIzpCDP.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cl2SVslI.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CHOj1P8S.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/KldIWR3W.js">
-<link rel="prefetch" as="style" crossorigin href="/_nuxt/error-404.C3V-3Mc4.css">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CDBbyfEG.js">
-<link rel="prefetch" as="style" crossorigin href="/_nuxt/error-500.dGVH929u.css">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/BUPHyQu7.js">
-<meta name="theme-color" content="#3b82f6">
-<script type="module" src="/_nuxt/DVkxZlI2.js" crossorigin></script><script>"use strict";(()=>{const t=window,e=document.documentElement,c=["dark","light"],n=getStorageValue("localStorage","nuxt-color-mode")||"light";let i=n==="system"?u():n;const r=e.getAttribute("data-color-mode-forced");r&&(i=r),l(i),t["__NUXT_COLOR_MODE__"]={preference:n,value:i,getColorScheme:u,addColorScheme:l,removeColorScheme:d};function l(o){const s=""+o+"",a="";e.classList?e.classList.add(s):e.className+=" "+s,a&&e.setAttribute("data-"+a,o)}function d(o){const s=""+o+"",a="";e.classList?e.classList.remove(s):e.className=e.className.replace(new RegExp(s,"g"),""),a&&e.removeAttribute("data-"+a)}function f(o){return t.matchMedia("(prefers-color-scheme"+o+")")}function u(){if(t.matchMedia&&f("").media!=="not all"){for(const o of c)if(f(":"+o).matches)return o}return"light"}})();function getStorageValue(t,e){switch(t){case"localStorage":return window.localStorage.getItem(e);case"sessionStorage":return window.sessionStorage.getItem(e);case"cookie":return getCookie(e);default:return null}}function getCookie(t){const c=("; "+window.document.cookie).split("; "+t+"=");if(c.length===2)return c.pop()?.split(";").shift()}</script></head><body><div id="__nuxt"></div><div id="teleports"></div><script type="application/json" data-nuxt-data="nuxt-app" data-ssr="false" id="__NUXT_DATA__">[{"prerenderedAt":1,"serverRendered":2},1756883718243,false]</script>
-<script>window.__NUXT__={};window.__NUXT__.config={public:{},app:{baseURL:"/",buildId:"809ed744-8176-4048-987a-ec01260b66ac",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ebtihaj Khan, technical product manager</title>
+  <meta name="description" content="Ebtihaj Khan is a technical product manager. He builds health software for polio teams in Pakistan and pharmacy teams in the US.">
+  <meta property="og:title" content="Ebtihaj Khan, technical product manager">
+  <meta property="og:description" content="Public health, GIS, and US healthcare interoperability. Eight years of shipped product work.">
+  <meta name="theme-color" content="#EDF1F3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E1620" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try { if (localStorage.getItem('view') === 'short') document.documentElement.dataset.view = 'short'; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="bar">
+    <a class="bar__name" href="#top">Ebtihaj Khan</a>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="#now">Now</a>
+      <a href="#field">Field work</a>
+      <a href="#career">Career</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="bar__tools">
+      <div class="view-switch" role="group" aria-label="Reading length">
+        <button type="button" data-view="full" aria-pressed="true">Full story</button>
+        <button type="button" data-view="short" aria-pressed="false">Short version</button>
+      </div>
+      <button class="icon-btn" type="button" id="theme" aria-label="Switch color theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+      </button>
+      <button class="kbd-btn" type="button" id="open-palette" aria-label="Open command menu">
+        <kbd>⌘</kbd><kbd>K</kbd>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero__text">
+        <p class="hero__role">Senior product manager at Rayn Group. Based in Islamabad, working with teams in Pakistan and the US.</p>
+        <h1 class="hero__title">I build health software for polio teams in Pakistan and pharmacy teams in the US.
+        </h1>
+        <p class="hero__lede">Eight years of product work across public health, GIS, and US healthcare interoperability. I write the PRD, map every message in the flow, and stay with the team until the release is live.</p>
+
+        <div class="lens" role="group" aria-label="Focus the orb on a domain">
+          <p class="lens__label">Pick a domain to see how I think about it.</p>
+          <div class="lens__options">
+            <button type="button" data-shape="field" aria-pressed="false">
+              <span class="lens__dot"></span>Public health and GIS
+            </button>
+            <button type="button" data-shape="interop" aria-pressed="false">
+              <span class="lens__dot"></span>US health interoperability
+            </button>
+            <button type="button" data-shape="civic" aria-pressed="false">
+              <span class="lens__dot"></span>Civic tech
+            </button>
+          </div>
+          <p class="lens__note" aria-live="polite" id="lens-note">The orb is idle. It holds 1,725 points, one for every 40 vaccinators GCSS tracks in a campaign.</p>
+        </div>
+      </div>
+      <div class="hero__orb">
+        <canvas id="orb" aria-hidden="true"></canvas>
+      </div>
+    </section>
+
+    <!-- Proof -->
+    <section class="proof" aria-labelledby="proof-h">
+      <h2 id="proof-h" class="sr-only">Results</h2>
+      <ol class="proof__list">
+        <li><span class="proof__n" data-count="69000">69,000+</span><span class="proof__t">vaccinators tracked in real time across 6,000+ administrative boundaries.</span></li>
+        <li><span class="proof__n">6 h <span class="proof__arrow" aria-label="down to">→</span> 30 min</span><span class="proof__t">to find missed settlements after a polio campaign.</span></li>
+        <li><span class="proof__n" data-count="5000">5,000+</span><span class="proof__t">children vaccinated in settlements the system flagged as missed.</span></li>
+        <li><span class="proof__n" data-count="10">10</span><span class="proof__t">EHR, pharmacy, and payer integrations owned on a US virtual pharmacy platform.</span></li>
+      </ol>
+    </section>
+
+    <!-- Now: integration map -->
+    <section class="sect" id="now" aria-labelledby="now-h">
+      <div class="sect__head">
+        <h2 id="now-h">What I work on now</h2>
+        <p>I own the integration roadmap for Foundation Health, a US virtual pharmacy platform. Each node below is a system I scoped or shipped. Select one to read what I did.</p>
+      </div>
+
+      <div class="imap" id="imap">
+        <svg class="imap__lines" id="imap-lines" aria-hidden="true"></svg>
+        <div class="imap__hub" id="imap-hub">
+          <span class="imap__hub-name">Foundation Health</span>
+          <span class="imap__hub-sub">Virtual pharmacy platform</span>
+        </div>
+        <div class="imap__nodes" id="imap-nodes" role="list"></div>
+        <article class="imap__panel" id="imap-panel" aria-live="polite"></article>
+      </div>
+      <ul class="legend" aria-label="Legend">
+        <li><span class="sw sw--ehr"></span>Clinical records</li>
+        <li><span class="sw sw--rx"></span>Pharmacy and fulfillment</li>
+        <li><span class="sw sw--payer"></span>Payer and benefits</li>
+        <li><span class="sw sw--core"></span>Internal platform</li>
+      </ul>
+    </section>
+
+    <!-- Decisions -->
+    <section class="sect" id="calls" aria-labelledby="calls-h">
+      <div class="sect__head">
+        <h2 id="calls-h">Calls I made, and why</h2>
+        <p>A product manager's work shows in decisions. Here are five from the last year.</p>
+      </div>
+      <div class="calls">
+        <details class="call" open>
+          <summary><span class="call__q">Which key identifies a drug?</span><span class="call__a">RxCUI</span></summary>
+          <p>One drug maps to many NDCs, and NDC formats differ between sources. RxCUI gives one stable ID per concept. Five separate medication lookups move to one compendia service on that key.</p>
+        </details>
+        <details class="call">
+          <summary><span class="call__q">Call RxNav, or host RxNorm?</span><span class="call__a">Host it</span></summary>
+          <p>The RxNav API caps at 20 requests a second. Platform volume needs more. We load RxNorm as flat files and keep Medi-Span for the two fields nothing else supplies: therapeutic class and DEA schedule. That cut the licensed scope to what we use.</p>
+        </details>
+        <details class="call">
+          <summary><span class="call__q">What happens when a prior authorization vendor has no coverage?</span><span class="call__a">Fall back</span></summary>
+          <p>Cencora goes first. On a no-coverage response, the request moves to CoverMyMeds. Payers without an electronic question set go to fax after a set window. Together the two vendors cover more than 85% of pharmacy-benefit payers.</p>
+        </details>
+        <details class="call">
+          <summary><span class="call__q">How do we leave a vendor without losing data?</span><span class="call__a">Run both</span></summary>
+          <p>For the Zoho Desk exit, the platform wrote every task to both systems. We migrated about 1M events and reconciled them daily. Cutover follows a one-week parallel run with a subset of users.</p>
+        </details>
+        <details class="call">
+          <summary><span class="call__q">How do we build for a federal deadline?</span><span class="call__a">One library</span></summary>
+          <p>CMS-0057-F brings a January 2027 compliance deadline. I planned one NCPDP library for prior authorization, RTPB, and formulary. Message builders hold no vendor logic. Only the transport client knows the vendor, so the next vendor costs less.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Field work -->
+    <section class="sect" id="field" aria-labelledby="field-h">
+      <div class="sect__head">
+        <h2 id="field-h">Field work</h2>
+        <p>Products for immunization programs with WHO, the Gates Foundation, and Pakistan's National Emergency Operations Centre. Users work in low-connectivity districts, often on shared phones.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="gis" aria-pressed="false">GIS</button>
+        <button type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+        <button type="button" data-filter="data" aria-pressed="false">Data and ML</button>
+        <button type="button" data-filter="interop" aria-pressed="false">Interoperability</button>
+      </div>
+
+      <ul class="projects" id="projects">
+        <li class="proj" data-tags="gis data">
+          <button class="proj__head" type="button" aria-expanded="true">
+            <span class="proj__name">Geographic Coverage Support System</span>
+            <span class="proj__meta">2022–2024 with WHO, NEOC, Gates Foundation</span>
+            <span class="proj__stat">15,800+ missed settlements found</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>GCSS digitized administrative boundaries across Pakistan and tracked vaccinators live during polio campaigns. Supervisors saw which settlements each team covered.</p>
+            <ul class="detail">
+              <li>Scaled to 6,000+ boundaries and 69,000+ vaccinators.</li>
+              <li>Shipped missed-settlement detection and geospatial QA. Review time fell from about 6 hours to under 30 minutes.</li>
+              <li>Follow-up campaigns vaccinated 5,000+ children in flagged areas.</li>
+              <li>WHO adopted the system for polio campaign monitoring.</li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="mobile data">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">Digital Information System for Polio</span>
+            <span class="proj__meta">2024–2025 with WHO, NEOC</span>
+            <span class="proj__stat">40%+ better data timeliness</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>Offline-first Android and web apps replace paper tally sheets for vaccinators and supervisors.</p>
+            <ul class="detail">
+              <li>Ran user research with vaccinators, area in-charges, and union council medical officers.</li>
+              <li>Ran field pilots and reprioritized the backlog after each one.</li>
+              <li>Pilot districts improved data timeliness and accuracy by over 40% against paper.</li>
+              <li>The program is scaling to a national rollout.</li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="data mobile">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">VaxiSure smart cold chain</span>
+            <span class="proj__meta">2024–2025 with MoITT, NEOC, EPI Balochistan</span>
+            <span class="proj__stat">Up to 25% less vaccine wastage</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>IoT vaccine carriers log temperature, GPS, and lid openings. A dashboard shows cold chain breaches and team routes as they happen.</p>
+            <ul class="detail">
+              <li>Wrote the multi-sensor specification and led pilots with NEOC, DEOC Islamabad, and EPI Balochistan.</li>
+              <li>Pilots caught several cold chain breaches in time to act.</li>
+              <li>Wrote the rollout proposal for 180 devices across 36 districts.</li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="data gis">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">Team support centre detection</span>
+            <span class="proj__meta">2022–2024 with WHO Pakistan, NEOC</span>
+            <span class="proj__stat">95%+ of centres found automatically</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>An ML model reads vaccinator GPS traces and finds where teams start and end each day.</p>
+            <ul class="detail">
+              <li>Worked with data scientists on ingress and egress detection.</li>
+              <li>Designed geofencing for timestamped arrival and departure records.</li>
+              <li>Compared detected centres with declared ones. The gap exposed real reporting errors.</li>
+              <li>The model became a core module of GCSS.</li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="interop">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">Family planning DAK integration</span>
+            <span class="proj__meta">2025–now with Pathfinder, Sindh Health Department</span>
+            <span class="proj__stat">FHIR exchange design</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>Connects the WHO family planning digital adaptation kit to Sindh's client records and EMR platforms.</p>
+            <ul class="detail">
+              <li>Defined FHIR-based exchange for family planning encounters and client records.</li>
+              <li>Aligned data dictionaries and clinical terms with the health department.</li>
+              <li>Planned pilots and integration tests across selected facilities.</li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="gis">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">BlueLines catchment mapping</span>
+            <span class="proj__meta">Environmental surveillance pilot</span>
+            <span class="proj__stat">Upstream poliovirus sources</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>A GIS pilot traced sewage catchments upstream of positive environmental samples. Authorities used it to place sampling sites and target outbreak response.</p>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="data interop">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">WHO IDIMS technical audit</span>
+            <span class="proj__meta">With WHO</span>
+            <span class="proj__stat">Architecture redesign</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>Audited the data flows of WHO's integrated data system and specified interoperability fixes with partner systems.</p>
+          </div></div>
+        </li>
+        <li class="proj" data-tags="gis mobile">
+          <button class="proj__head" type="button" aria-expanded="false">
+            <span class="proj__name">xLATS</span>
+            <span class="proj__meta">Location analysis for AgriTech</span>
+            <span class="proj__stat">Farm data platform</span>
+          </button>
+          <div class="proj__body"><div class="proj__inner">
+            <p>A platform for AgriTech startups to run field operations, onboard farmers, and manage geospatial farm data.</p>
+          </div></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Prototypes -->
+    <section class="sect" id="builds" aria-labelledby="builds-h">
+      <div class="sect__head">
+        <h2 id="builds-h">Things I prototyped in 2026</h2>
+        <p>I build working prototypes to test an idea with users before it reaches a backlog.</p>
+      </div>
+      <div class="builds">
+        <article class="build">
+          <div class="build__art build__art--poly" aria-hidden="true">
+            <svg viewBox="0 0 200 120"><path class="poly" d="M20 90 L48 30 L102 22 L150 44 L178 96 L110 104 Z"/><g class="handles"><circle cx="20" cy="90" r="4"/><circle cx="48" cy="30" r="4"/><circle cx="102" cy="22" r="4"/><circle class="drag" cx="150" cy="44" r="5"/><circle cx="178" cy="96" r="4"/><circle cx="110" cy="104" r="4"/></g></svg>
+          </div>
+          <h3>Microplanning boundary editor</h3>
+          <p>EPI microplans depend on correct union council boundaries. Admins drag polygon vertices on a map to fix them. Every edit goes into an append-only audit log. KML goes in and GeoJSON comes out.</p>
+          <p class="build__stack">Leaflet, Geoman, Node.js, Express</p>
+        </article>
+        <article class="build">
+          <div class="build__art build__art--health" aria-hidden="true">
+            <svg viewBox="0 0 200 120"><g class="rings"><circle cx="70" cy="60" r="34"/><circle cx="130" cy="60" r="34"/><circle cx="100" cy="36" r="34"/></g><circle class="pulse" cx="100" cy="66" r="5"/></svg>
+          </div>
+          <h3>One Health dashboard</h3>
+          <p>Animal health, food safety, and environment teams report into one view for CCHF, brucellosis, and rabies. An alerts feed flags linked signals across sectors.</p>
+          <p class="build__stack">React, Express, JSON data store</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Career -->
+    <section class="sect" id="career" aria-labelledby="career-h">
+      <div class="sect__head">
+        <h2 id="career-h">Career</h2>
+      </div>
+      <ol class="timeline">
+        <li class="role">
+          <div class="role__when">2022–now</div>
+          <div class="role__what">
+            <h3>Senior product manager, Rayn Group</h3>
+            <p>I own strategy and delivery for digital health, GIS, and analytics products. My work runs from national immunization programs to a US virtual pharmacy platform. I run 8+ concurrent initiatives and work with engineering on API contracts and integration architecture.</p>
+            <ul class="detail">
+              <li>Delivered SMART on FHIR and HL7 integrations with Epic and Cerner.</li>
+              <li>Led three regulatory integrations in parallel: pharmacy prior authorization, a shared payer messaging layer, and medical prior authorization.</li>
+              <li>Built HIPAA-aligned data flows and standard API contracts with engineering and compliance.</li>
+              <li>Helped win a $150,000 WHO project through discovery and proposal work.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="role">
+          <div class="role__when">2016–2022</div>
+          <div class="role__what">
+            <h3>Government innovation lead, Code for Pakistan</h3>
+            <p>I led product work for civic tech inside government departments. I directed 60 engineers who digitized 30+ public services for 900,000+ citizens.</p>
+            <ul class="detail">
+              <li>Launched Pakistan's first provincial open data portal on CKAN with 6,000+ datasets.</li>
+              <li>Co-wrote the KP Open Data Strategy with the KP Performance Management and Reforms Unit.</li>
+              <li>Saved government offices 57,000+ processing hours a year.</li>
+              <li>Trained 300+ government officials.</li>
+              <li>Shipped a business registration system that cut record retrieval from days to seconds.</li>
+              <li>Built a disaster relief data system for PDMA and a grants system for the Minority Affairs Department.</li>
+              <li>Mapped Billion Tree Tsunami plantation sites with the Open Knowledge Foundation.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="role">
+          <div class="role__when">2015–2016</div>
+          <div class="role__what">
+            <h3>Business innovation officer, The Nerd Camp</h3>
+            <p>I built roadmaps from market research and customer feedback. Three product launches drove about 20% revenue growth.</p>
+          </div>
+        </li>
+        <li class="role">
+          <div class="role__when">2014–2015</div>
+          <div class="role__what">
+            <h3>Software engineer, Sweet Pixel Studios</h3>
+            <p>I built mobile games in Unity 3D and C# with Firebase analytics. Our titles held a 4.5+ rating on Google Play and the App Store.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Toolkit -->
+    <section class="sect sect--split" id="toolkit" aria-labelledby="toolkit-h">
+      <div class="sect__head">
+        <h2 id="toolkit-h">Toolkit</h2>
+      </div>
+      <dl class="kit">
+        <div><dt>Standards</dt><dd>FHIR R4, SMART on FHIR, HL7, NCPDP SCRIPT, RTPB, X12 278, RxNorm</dd></div>
+        <div><dt>Product</dt><dd>Discovery, PRDs, roadmaps, pilot design, phased rollouts, OKRs, Scrum</dd></div>
+        <div><dt>Data and GIS</dt><dd>SQL, PostgreSQL, PostGIS, QGIS, ArcGIS, Python, CKAN</dd></div>
+        <div><dt>Tools</dt><dd>Jira, Confluence, Notion, ClickUp, Figma, Postman, Amplitude, Looker Studio</dd></div>
+        <div><dt>Compliance</dt><dd>HIPAA-aligned data flows, CMS-0057-F planning</dd></div>
+      </dl>
+    </section>
+
+    <section class="sect sect--split" id="talks" aria-labelledby="talks-h">
+      <div class="sect__head">
+        <h2 id="talks-h">Talks and papers</h2>
+      </div>
+      <ul class="talks">
+        <li><span class="talks__y">2020</span><span>Co-wrote “Civic fellowships: a framework for civic technology innovation in Pakistan” for an ACM CSCW workshop.</span></li>
+        <li><span class="talks__y">2020</span><span>Spoke on building policy for open and inclusive governance at the g0v Summit, Taiwan.</span></li>
+        <li><span class="talks__y">2020</span><span>Led a session on civic tech responses to COVID-19 at the Code for All Summit.</span></li>
+        <li><span class="talks__y">2017</span><span>Presented the impact of civic tech projects in Pakistan at The Impacts of Civic Technology Conference, Taiwan.</span></li>
+      </ul>
+    </section>
+
+    <section class="sect sect--split" id="education" aria-labelledby="edu-h">
+      <div class="sect__head">
+        <h2 id="edu-h">Education</h2>
+      </div>
+      <ul class="talks">
+        <li><span class="talks__y">2020</span><span>MS computer science, University of Engineering and Technology, Peshawar. CGPA 3.8.</span></li>
+        <li><span class="talks__y">2018</span><span>Scrum Master certification, International Scrum Institute.</span></li>
+        <li><span class="talks__y">2014</span><span>BS computer science, University of Engineering and Technology, Peshawar. CGPA 3.9.</span></li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Have a hard integration or a field rollout?</h2>
+      <p>I like problems where the standard is strict and the users are busy. Write to me.</p>
+      <div class="contact__row">
+        <button class="copy" type="button" id="copy-email" data-email="ebtihaj316@gmail.com">
+          <span class="copy__text">ebtihaj316@gmail.com</span>
+          <span class="copy__hint" aria-live="polite">Copy</span>
+        </button>
+        <a class="link" href="https://www.linkedin.com/in/ebtihajkhan/" rel="noopener" target="_blank">LinkedIn</a>
+        <a class="link" href="https://github.com/ebtihaj-khan" rel="noopener" target="_blank">GitHub</a>
+        <a class="link" href="https://medium.com/@ebtihaj316/" rel="noopener" target="_blank">Medium</a>
+        <button class="link" type="button" id="print">Print resume</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Built in plain HTML, CSS, and canvas. Updated October 2026.</p>
+  </footer>
+
+  <!-- Command menu -->
+  <dialog class="palette" id="palette" aria-label="Command menu">
+    <input type="text" id="palette-input" placeholder="Jump to a section or run a command" autocomplete="off" aria-controls="palette-list">
+    <ul id="palette-list" role="listbox"></ul>
+  </dialog>
+
+  <script src="assets/orb.js" defer></script>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
