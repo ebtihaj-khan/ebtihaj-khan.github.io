@@ -66,7 +66,7 @@
       const s = 0.09 + 0.015 * Math.sin(t * 1.5 + c);
       const R = 0.92;
       p.tx = cx * R + x * s; p.ty = cy * R + y * s; p.tz = cz * R + z * s;
-      p.flag = c === 7 ? 1 : 0;
+      p.flag = 0;
     }
   };
 

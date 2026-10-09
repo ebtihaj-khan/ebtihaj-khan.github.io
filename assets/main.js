@@ -53,10 +53,10 @@
 
   // Orb lens
   const notes = {
-    idle: 'The orb is idle. It holds 1,725 points, one for every 40 vaccinators GCSS tracks in a campaign.',
-    field: 'Each point is a settlement on a campaign map. Amber points are settlements the system marks as missed. Teams go back to those first.',
-    interop: 'The hub is the pharmacy platform. Each cluster is a partner system. Teal points on the spokes are messages: prescriptions, prior authorizations, and benefit checks.',
-    civic: 'Thirty clusters, one for each government service my teams digitized at Code for Pakistan. The teal one is the open data portal.'
+    idle: "Right now it's 1,725 points. That's one for every 40 vaccinators GCSS tracks during a campaign.",
+    field: "Now it's a campaign map. Each point is a settlement. The amber ones are settlements a team missed, and they're where follow-up teams go first.",
+    interop: "Now it's a pharmacy platform. The hub talks to ten partner systems, and the moving points are messages: prescriptions, prior authorizations, benefit checks.",
+    civic: "Now it's thirty clusters, one for each government service my teams at Code for Pakistan took online."
   };
   const lensBtns = $$('.lens__options button');
   const note = $('#lens-note');
@@ -249,14 +249,14 @@
   const palette = $('#palette'), input = $('#palette-input'), list = $('#palette-list');
   const go = (id) => () => document.getElementById(id).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   const commands = [
-    { label: 'What I work on now', hint: 'Section', run: go('now') },
-    { label: 'How I run an integration', hint: 'Section', run: go('playbook') },
-    { label: 'Calls I made', hint: 'Section', run: go('calls') },
-    { label: 'Case study: GCSS', hint: 'Section', run: go('case') },
-    { label: 'Field work', hint: 'Section', run: go('field') },
-    { label: 'Prototypes', hint: 'Section', run: go('builds') },
+    { label: "What's on my desk right now", hint: 'Section', run: go('now') },
+    { label: 'From first call to go-live', hint: 'Section', run: go('playbook') },
+    { label: 'The calls behind the work', hint: 'Section', run: go('calls') },
+    { label: 'Finding missed settlements', hint: 'Section', run: go('case') },
+    { label: 'Building for polio teams', hint: 'Section', run: go('field') },
+    { label: 'Things I built this year', hint: 'Section', run: go('builds') },
     { label: 'Career', hint: 'Section', run: go('career') },
-    { label: 'Talks and papers', hint: 'Section', run: go('talks') },
+    { label: "Where I've spoken", hint: 'Section', run: go('talks') },
     { label: 'Contact', hint: 'Section', run: go('contact') },
     { label: 'Copy email address', hint: 'Action', run: copyEmail },
     { label: 'Switch color theme', hint: 'Action', run: toggleTheme },
