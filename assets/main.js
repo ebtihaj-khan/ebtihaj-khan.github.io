@@ -8,7 +8,7 @@
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }
   };
   const withTransition = (fn) => {
-    if (document.startViewTransition && !reduce) document.startViewTransition(fn);
+    if (document.startViewTransition && !reduce && !document.hidden) document.startViewTransition(fn).ready.catch(() => {});
     else fn();
   };
 
