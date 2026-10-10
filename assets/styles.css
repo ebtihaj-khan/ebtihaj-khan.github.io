@@ -526,4 +526,7 @@ button[aria-pressed="true"] .lens__dot { background: var(--teal); box-shadow: 0 
   .print-resume ul { margin: 0; padding-left: 12pt; }
   .print-resume li { margin: 1pt 0; }
   .print-resume p { margin: 0; }
+  .print-resume .pr-row { display: flex; justify-content: space-between; gap: 12pt; margin: 1.5pt 0; }
+  .print-resume .pr-row > span:last-child { flex: none; color: #333; }
+  .print-resume .pr-skill { display: grid; grid-template-columns: 78pt minmax(0, 1fr); gap: 8pt; margin: 1.5pt 0; }
 }
