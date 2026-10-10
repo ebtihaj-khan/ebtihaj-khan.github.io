@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ebtihaj Khan, technical product manager</title>
-  <meta name="description" content="Ebtihaj Khan is a senior product manager who builds health software for polio teams in Pakistan and pharmacy teams in the US.">
-  <meta property="og:title" content="Ebtihaj Khan, technical product manager">
+  <title>Ebtihaj Khan, product manager</title>
+  <meta name="description" content="Ebtihaj Khan is a senior product manager. His team built the map that found 15,800 settlements a national polio campaign missed. Now he runs US healthcare integrations.">
+  <meta property="og:title" content="15,800 settlements. One map. Ebtihaj Khan, product manager.">
   <meta property="og:description" content="Public health, GIS, and US healthcare interoperability. Eight years of shipped product work.">
-  <meta name="theme-color" content="#EDF1F3" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0E1620" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0E1620">
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,25 +16,23 @@
   <script>
     document.documentElement.classList.add('js');
     try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-    try { if (localStorage.getItem('view') === 'short') document.documentElement.dataset.view = 'short'; } catch (e) {}
   </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
 
   <header class="bar">
     <a class="bar__name" href="#top">Ebtihaj Khan</a>
     <nav class="bar__nav" aria-label="Sections">
-      <a href="#now">Now</a>
-      <a href="#field">Field work</a>
-      <a href="#career">Career</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#ch-gcss">Story</a>
+      <a href="#ch-calls">Decisions</a>
+      <a href="#record">Record</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="bar__tools">
-      <div class="view-switch" role="group" aria-label="Reading length">
-        <button type="button" data-view="full" aria-pressed="true">Full story</button>
-        <button type="button" data-view="short" aria-pressed="false">Short version</button>
-      </div>
+      <a class="pill-btn" href="resume.pdf" download>Resume PDF</a>
       <button class="icon-btn" type="button" id="theme" aria-label="Switch color theme">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
       </button>
@@ -49,28 +46,44 @@
     <!-- Hero -->
     <section class="hero" id="top">
       <div class="hero__text">
-        <p class="hero__role">Ebtihaj Khan, senior product manager at Rayn Group in Islamabad</p>
-        <h1 class="hero__title">Some of my users go door to door with polio drops. Others run pharmacy queues in the US.</h1>
-        <p class="hero__lede">I build the software both of them depend on. For eight years I've done that with WHO, the Gates Foundation, Pakistan's emergency operations centre, provincial governments, and a US virtual pharmacy. The work changes every time. My part stays the same: I learn how people actually work, write down exactly what has to happen, and stay with the team until it holds up in the real world.</p>
-
-        <div class="lens" role="group" aria-label="Change the orb">
-          <p class="lens__label">Pick one of my worlds and watch the orb change.</p>
-          <div class="lens__options">
-            <button type="button" data-shape="field" aria-pressed="false">
-              <span class="lens__dot"></span>Public health and GIS
-            </button>
-            <button type="button" data-shape="interop" aria-pressed="false">
-              <span class="lens__dot"></span>US health interoperability
-            </button>
-            <button type="button" data-shape="civic" aria-pressed="false">
-              <span class="lens__dot"></span>Civic tech
-            </button>
-          </div>
-          <p class="lens__note" aria-live="polite" id="lens-note">Right now it's 1,725 points. That's one for every 40 vaccinators GCSS tracks during a campaign.</p>
+        <h1 class="hero__title"><span class="hero__num" data-count="15800">15,800</span> settlements.</h1>
+        <p class="hero__hook">Polio campaigns had missed every one. My team built the map that found them.</p>
+        <p class="hero__lede">I'm Ebtihaj, a senior product manager. I build software for people with hard jobs: vaccinators, pharmacists, and civil servants.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#ch-gcss">See how we found them</a>
+          <a class="btn btn--ghost" href="#evidence">Check my skills</a>
         </div>
+        <p class="hero__loop">Also on this page: <a href="#ch-confession">the feature I regret shipping.</a></p>
       </div>
-      <div class="hero__orb">
-        <canvas id="orb" aria-hidden="true"></canvas>
+
+      <figure class="hero__orb">
+        <div class="orb-stage"><canvas id="orb" aria-hidden="true"></canvas></div>
+        <figcaption class="lens" role="group" aria-label="Change the orb">
+          <p class="lens__label">Each shape maps one part of my work. Pick one.</p>
+          <div class="lens__options">
+            <button type="button" data-shape="field" aria-pressed="false"><span class="lens__dot"></span>Public health</button>
+            <button type="button" data-shape="interop" aria-pressed="false"><span class="lens__dot"></span>US interoperability</button>
+            <button type="button" data-shape="civic" aria-pressed="false"><span class="lens__dot"></span>Civic tech</button>
+          </div>
+          <p class="lens__note" aria-live="polite" id="lens-note">1,725 points. One for every 40 vaccinators GCSS tracks in a campaign.</p>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Ten-second summary -->
+    <section class="summary" aria-labelledby="summary-h">
+      <h2 id="summary-h" class="summary__title">The 10-second version</h2>
+      <dl class="summary__grid">
+        <div><dt>Looking for</dt><dd>Senior or technical product manager roles in health tech</dd></div>
+        <div><dt>Experience</dt><dd>8+ years in product, 12 in software</dd></div>
+        <div><dt>Domains</dt><dd>Public health, GIS, US healthcare interoperability, civic tech</dd></div>
+        <div><dt>Standards</dt><dd>FHIR, SMART on FHIR, HL7, NCPDP SCRIPT, X12 278</dd></div>
+        <div><dt>Partners</dt><dd>WHO, Gates Foundation, NEOC Pakistan, Pathfinder, Foundation Health</dd></div>
+        <div><dt>Based in</dt><dd>Islamabad. Works remotely with US teams.</dd></div>
+      </dl>
+      <div class="summary__actions">
+        <a class="btn" href="resume.pdf" download>Download the one-page resume</a>
+        <button class="btn btn--ghost js-copy" type="button" data-email="ebtihaj316@gmail.com">Copy my email</button>
       </div>
     </section>
 
@@ -78,19 +91,147 @@
     <section class="proof" aria-labelledby="proof-h">
       <h2 id="proof-h" class="sr-only">Results</h2>
       <ol class="proof__list">
-        <li><span class="proof__n" data-count="69000">69,000+</span><span class="proof__t">vaccinators on a live map, across 6,000+ administrative boundaries.</span></li>
-        <li><span class="proof__n">6 h <span class="proof__arrow" aria-label="down to">→</span> 30 min</span><span class="proof__t">to find the settlements a polio campaign missed.</span></li>
-        <li><span class="proof__n" data-count="5000">5,000+</span><span class="proof__t">children vaccinated in places the system flagged.</span></li>
-        <li><span class="proof__n" data-count="10">10</span><span class="proof__t">partner systems I own on a US virtual pharmacy platform.</span></li>
+        <li><span class="proof__n" data-count="69000">69,000+</span><span class="proof__t">vaccinators on one live map</span></li>
+        <li><span class="proof__n">6 h <span class="proof__arrow" aria-label="down to">→</span> 30 min</span><span class="proof__t">to find a campaign's missed settlements</span></li>
+        <li><span class="proof__n" data-count="5000">5,000+</span><span class="proof__t">children vaccinated in flagged settlements</span></li>
+        <li><span class="proof__n" data-count="10">10</span><span class="proof__t">US partner systems I own on one pharmacy platform</span></li>
       </ol>
     </section>
 
-    <!-- Now: integration map -->
-    <section class="sect" id="now" aria-labelledby="now-h">
+    <!-- Evidence -->
+    <section class="sect" id="evidence" aria-labelledby="evidence-h">
       <div class="sect__head">
-        <h2 id="now-h">What's on my desk right now</h2>
-        <p>I own the integration roadmap at Foundation Health, a US virtual pharmacy. In practice that means one platform talking to a lot of outside systems, each with its own rules. Pick any of them to see what I did there.</p>
+        <h2 id="evidence-h">Hiring for a specific skill? Pick it.</h2>
+        <p>Every skill below links to the projects that prove it.</p>
       </div>
+      <div class="evidence">
+        <div class="evidence__skills" role="group" aria-label="Skills" id="evidence-skills"></div>
+        <div class="evidence__out" id="evidence-out" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Chapter 1: GCSS -->
+    <section class="chapter" id="ch-gcss" aria-labelledby="ch1-h">
+      <p class="chapter__kicker">Chapter 1. The missed settlements</p>
+      <h2 class="chapter__hook" id="ch1-h">Six hours.</h2>
+      <p class="chapter__lead">That's how long it took to find the settlements one polio campaign missed. A campaign only works if it reaches every child.</p>
+
+      <div class="ch-grid">
+        <ol class="beats">
+          <li><span>We mapped boundaries for <strong>6,000+</strong> administrative areas.</span></li>
+          <li><span>We put <strong>69,000+</strong> vaccinators on a live map.</span></li>
+          <li><span>We built detection that flags settlements no team reached.</span></li>
+          <li><span>Follow-up teams went straight to the flags.</span></li>
+        </ol>
+        <figure class="units" aria-labelledby="units-cap">
+          <canvas id="units" role="img" aria-label="15,800 dots, one for each missed settlement GCSS flagged"></canvas>
+          <figcaption id="units-cap"><span class="units__count" id="units-count">0</span> settlements flagged. Each dot is one settlement. Each block holds 1,000.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="bars" aria-labelledby="bars-cap">
+        <figcaption id="bars-cap">Time to find a campaign's missed settlements</figcaption>
+        <div class="bar-row"><span class="bar-label">Before</span><div class="bar-track"><div class="cbar cbar--before" style="--w: 100%"></div></div><span class="bar-value">~6 hours</span></div>
+        <div class="bar-row"><span class="bar-label">With GCSS</span><div class="bar-track"><div class="cbar cbar--after" style="--w: 8.3%"></div></div><span class="bar-value">&lt; 30 min</span></div>
+      </figure>
+
+      <div class="payoff">
+        <p class="payoff__n"><span data-count="5000">5,000+</span> children</p>
+        <p class="payoff__t">vaccinated because a dot turned amber. WHO adopted GCSS to monitor polio campaigns.</p>
+      </div>
+    </section>
+
+    <!-- Chapter 2: TSC -->
+    <section class="chapter chapter--split" id="ch-gps" aria-labelledby="ch2-h">
+      <div class="chapter__text">
+        <p class="chapter__kicker">Chapter 2. The GPS truth</p>
+        <h2 class="chapter__hook chapter__hook--md" id="ch2-h">The reports said teams started here. The GPS said otherwise.</h2>
+        <p class="chapter__lead">So we let the GPS decide.</p>
+        <ul class="facts">
+          <li>An ML model reads each team's GPS trace and finds where its day really starts.</li>
+          <li>Geofences timestamp every arrival and departure.</li>
+          <li>The gap between declared and detected locations showed where reporting was off.</li>
+        </ul>
+        <p class="stat"><strong>95%+</strong> of team support centres found automatically</p>
+      </div>
+      <figure class="viz viz--gps">
+        <svg viewBox="0 0 400 300" role="img" aria-labelledby="gps-cap">
+          <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" class="grid-line"/></pattern></defs>
+          <rect width="400" height="300" fill="url(#grid)"/>
+          <path class="gps-trace" d="M262 214 C240 196 214 200 196 178 S168 132 140 126 S96 104 84 76"/>
+          <g class="pin pin--declared" transform="translate(300 92)"><circle r="7"/><text x="14" y="5">Declared</text></g>
+          <g class="pin pin--detected" transform="translate(262 214)"><circle r="7"/><text x="14" y="5">Detected</text></g>
+          <path class="gap-line" d="M300 92 L262 214"/>
+        </svg>
+        <figcaption id="gps-cap">Illustration. A team's trace starts far from the location it reported.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Chapter 3: VaxiSure -->
+    <section class="chapter chapter--split chapter--flip" id="ch-cold" aria-labelledby="ch3-h">
+      <div class="chapter__text">
+        <p class="chapter__kicker">Chapter 3. The box that reports on itself</p>
+        <h2 class="chapter__hook chapter__hook--md" id="ch3-h">A warm vaccine looks exactly like a cold one.</h2>
+        <p class="chapter__lead">So we built a carrier that reports on itself. It logs temperature, location, and every time someone opens the lid.</p>
+        <ul class="facts">
+          <li>Pilots caught several cold chain breaches in time to act.</li>
+          <li>The rollout proposal covers 180 devices in 36 districts.</li>
+        </ul>
+        <p class="stat"><strong>Up to 25%</strong> less potential vaccine wastage</p>
+      </div>
+      <figure class="viz viz--temp">
+        <svg viewBox="0 0 400 260" role="img" aria-labelledby="temp-cap">
+          <rect class="safe-band" x="40" y="96" width="340" height="104"/>
+          <text class="axis-t" x="34" y="100" text-anchor="end">8 °C</text>
+          <text class="axis-t" x="34" y="204" text-anchor="end">2 °C</text>
+          <text class="band-t" x="372" y="190" text-anchor="end">Safe range</text>
+          <line class="lid" x1="196" y1="30" x2="196" y2="226"/>
+          <text class="lid-t" x="202" y="40">Lid opened</text>
+          <path class="temp-line" d="M40 160 L80 152 L120 164 L160 156 L196 150 L214 112 L232 74 L252 64 L272 88 L300 132 L340 150 L380 154"/>
+          <circle class="alert-dot" cx="252" cy="64" r="6"/>
+          <text class="alert-t" x="262" y="58">Breach alert</text>
+        </svg>
+        <figcaption id="temp-cap">Illustration of a logged breach. Vaccines stay safe between 2 and 8 °C.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Chapter 4: DISP -->
+    <section class="chapter chapter--split" id="ch-paper" aria-labelledby="ch4-h">
+      <div class="chapter__text">
+        <p class="chapter__kicker">Chapter 4. Paper to phone</p>
+        <h2 class="chapter__hook chapter__hook--md" id="ch4-h">Every tally mark was a child.</h2>
+        <p class="chapter__lead">Campaign counts lived on paper tally sheets. Paper is slow to collect and hard to check. We moved the count onto offline-first Android and web apps.</p>
+        <ul class="facts">
+          <li>I ran research with vaccinators, area in-charges, and union council medical officers.</li>
+          <li>We piloted, listened, and reworked the backlog after every round.</li>
+          <li>The system is now scaling to a national rollout.</li>
+        </ul>
+        <p class="stat"><strong>40%+</strong> better data timeliness and accuracy in pilot districts</p>
+      </div>
+      <figure class="viz viz--tally" aria-labelledby="tally-cap">
+        <div class="tally" aria-hidden="true">
+          <div class="tally__sheet"><svg viewBox="0 0 180 150" class="tally__svg"><line x1="14" y1="14" x2="15" y2="38"/><line x1="23" y1="14" x2="24" y2="38"/><line x1="32" y1="14" x2="33" y2="38"/><line x1="41" y1="14" x2="42" y2="38"/><line class="slash" x1="10" y1="34" x2="46" y2="18"/><line x1="70" y1="14" x2="71" y2="38"/><line x1="79" y1="14" x2="80" y2="38"/><line x1="88" y1="14" x2="89" y2="38"/><line x1="97" y1="14" x2="98" y2="38"/><line class="slash" x1="66" y1="34" x2="102" y2="18"/><line x1="126" y1="14" x2="127" y2="38"/><line x1="135" y1="14" x2="136" y2="38"/><line x1="144" y1="14" x2="145" y2="38"/><line x1="153" y1="14" x2="154" y2="38"/><line class="slash" x1="122" y1="34" x2="158" y2="18"/><line x1="14" y1="48" x2="15" y2="72"/><line x1="23" y1="48" x2="24" y2="72"/><line x1="32" y1="48" x2="33" y2="72"/><line x1="41" y1="48" x2="42" y2="72"/><line class="slash" x1="10" y1="68" x2="46" y2="52"/><line x1="70" y1="48" x2="71" y2="72"/><line x1="79" y1="48" x2="80" y2="72"/><line x1="88" y1="48" x2="89" y2="72"/><line x1="97" y1="48" x2="98" y2="72"/><line class="slash" x1="66" y1="68" x2="102" y2="52"/><line x1="126" y1="48" x2="127" y2="72"/><line x1="135" y1="48" x2="136" y2="72"/><line x1="144" y1="48" x2="145" y2="72"/><line x1="153" y1="48" x2="154" y2="72"/><line class="slash" x1="122" y1="68" x2="158" y2="52"/><line x1="14" y1="82" x2="15" y2="106"/><line x1="23" y1="82" x2="24" y2="106"/><line x1="32" y1="82" x2="33" y2="106"/><line x1="41" y1="82" x2="42" y2="106"/><line class="slash" x1="10" y1="102" x2="46" y2="86"/><line x1="70" y1="82" x2="71" y2="106"/><line x1="79" y1="82" x2="80" y2="106"/><line x1="88" y1="82" x2="89" y2="106"/><line x1="97" y1="82" x2="98" y2="106"/><line class="slash" x1="66" y1="102" x2="102" y2="86"/><line x1="126" y1="82" x2="127" y2="106"/><line x1="135" y1="82" x2="136" y2="106"/><line x1="144" y1="82" x2="145" y2="106"/><line x1="153" y1="82" x2="154" y2="106"/><line class="slash" x1="122" y1="102" x2="158" y2="86"/><line x1="14" y1="116" x2="15" y2="140"/><line x1="23" y1="116" x2="24" y2="140"/><line x1="32" y1="116" x2="33" y2="140"/><line x1="41" y1="116" x2="42" y2="140"/><line class="slash" x1="10" y1="136" x2="46" y2="120"/><line x1="70" y1="116" x2="71" y2="140"/><line x1="79" y1="116" x2="80" y2="140"/><line x1="88" y1="116" x2="89" y2="140"/><line x1="97" y1="116" x2="98" y2="140"/><line class="slash" x1="66" y1="136" x2="102" y2="120"/></svg></div>
+          <div class="tally__arrow"></div>
+          <div class="tally__phone">
+            <div class="row"><b>House 14</b><i>3 children</i></div>
+            <div class="row"><b>House 15</b><i>1 child</i></div>
+            <div class="row"><b>House 16</b><i>Revisit</i></div>
+            <div class="row"><b>Synced</b><i>Offline OK</i></div>
+          </div>
+        </div>
+        <figcaption id="tally-cap">Illustration. The same count, checked and synced from the field.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Chapter 5: Switch -->
+    <section class="chapter" id="ch-switch" aria-labelledby="ch5-h">
+      <div class="clocks" aria-label="Current time in my two worlds">
+        <div><span class="clocks__city">Islamabad</span><span class="clocks__time" data-tz="Asia/Karachi">--:--</span></div>
+        <div><span class="clocks__city">New York</span><span class="clocks__time" data-tz="America/New_York">--:--</span></div>
+      </div>
+      <p class="chapter__kicker">Chapter 5. The switch</p>
+      <h2 class="chapter__hook chapter__hook--md" id="ch5-h">Then I switched worlds.</h2>
+      <p class="chapter__lead">Every message in US healthcare has a standard. Every standard has exceptions. I own the integration roadmap at Foundation Health, a US virtual pharmacy. Pick a system to see what I did there.</p>
 
       <div class="imap" id="imap">
         <svg class="imap__lines" id="imap-lines" aria-hidden="true"></svg>
@@ -109,223 +250,39 @@
       </ul>
     </section>
 
-    <!-- Playbook -->
-    <section class="sect sect--loose" id="playbook" aria-labelledby="playbook-h">
-      <div class="sect__head">
-        <h2 id="playbook-h">How I take a partner from first call to go-live</h2>
-        <p>I've run enough of these to have a routine. It goes roughly like this.</p>
-      </div>
-      <ol class="routine">
-        <li>
-          <h3>First, I look for where the partner breaks our pattern.</h3>
-          <p>Every partner does, somewhere. The mail-order pharmacy broke ours in three places. They start the flow instead of us. They reject any order without a valid NDC. And they needed an on-hold state we had to build from scratch.</p>
-        </li>
-        <li>
-          <h3>Then I map every event, start to finish.</h3>
-          <p>Prescription approved, received, matched, ordered, shipped. I write out each message and what it changes. Engineers get one picture of where patients get matched, where orders get created, and which events move a status.</p>
-        </li>
-        <li>
-          <h3>I decide how it fails before it fails.</h3>
-          <p>Webhook validation, duplicate events, an unmatched patient, an alert for the ops team. All of it goes in the PRD. On the forms project we swapped a flat 30-second retry for jittered retries to stop silent submission failures.</p>
-        </li>
-        <li>
-          <h3>When we replace a vendor, both systems run side by side.</h3>
-          <p>For the Zoho Desk exit, every task got written to both. We migrated about a million events, reconciled them daily, and ran a parallel week before planning the switch-off.</p>
-        </li>
-        <li>
-          <h3>Last, we test in production, together.</h3>
-          <p>I write the launch plan. We place and cancel real test orders with the customer and API teams. Stakeholders get a status note from me every day until it's live.</p>
-        </li>
-      </ol>
+    <!-- Chapter 6: Quiz -->
+    <section class="chapter" id="ch-calls" aria-labelledby="ch6-h">
+      <p class="chapter__kicker">Chapter 6. Your call</p>
+      <h2 class="chapter__hook chapter__hook--md" id="ch6-h">Five calls. Each had a tempting wrong answer.</h2>
+      <p class="chapter__lead">Pick yours. Then see mine.</p>
+      <div class="quiz" id="quiz"></div>
+      <p class="quiz__score" id="quiz-score" aria-live="polite"></p>
     </section>
 
-    <!-- Decisions -->
-    <section class="sect" id="calls" aria-labelledby="calls-h">
-      <div class="sect__head">
-        <h2 id="calls-h">The calls behind the work</h2>
-        <p>A lot of my job is choosing between two reasonable options and owning the result. Here are five recent ones.</p>
-      </div>
-      <div class="calls">
-        <details class="call" open>
-          <summary><span class="call__q">How should we identify a drug?</span><span class="call__a">RxCUI</span></summary>
-          <p>NDC looks like the obvious key, until you notice one drug has many NDCs and the formats differ by source. RxCUI gives each drug concept one stable ID. So five separate medication lookups are moving onto one compendia service built on it.</p>
-        </details>
-        <details class="call">
-          <summary><span class="call__q">Call RxNav's API, or host RxNorm ourselves?</span><span class="call__a">Host it</span></summary>
-          <p>RxNav caps out at 20 requests a second. That's fine for a demo and too slow for a pharmacy. We load RxNorm as flat files and keep Medi-Span for the two things nothing else gives us: therapeutic class and DEA schedule. The license now covers what we actually use.</p>
-        </details>
-        <details class="call">
-          <summary><span class="call__q">What if a prior authorization vendor can't cover a payer?</span><span class="call__a">Fall back</span></summary>
-          <p>The new vendor goes first. If it comes back with no coverage, the request moves to CoverMyMeds. If a payer has no electronic question set, the request goes to fax after a set window. Between the two vendors we reach more than 85% of pharmacy-benefit payers.</p>
-        </details>
-        <details class="call">
-          <summary><span class="call__q">How do you leave a vendor without losing data?</span><span class="call__a">Run both</span></summary>
-          <p>Write to both systems, reconcile every day, and plan the switch-off once the numbers match. That's how we're moving about a million task events off Zoho Desk.</p>
-        </details>
-        <details class="call">
-          <summary><span class="call__q">How do you build for a federal deadline?</span><span class="call__a">One library</span></summary>
-          <p>CMS-0057-F brings a compliance deadline in January 2027. I planned one NCPDP library for prior authorization, real-time benefit checks, and formulary. The message builders stay vendor-neutral. Only the transport layer knows who's on the other end, so each new vendor costs less to add.</p>
-        </details>
+    <!-- Chapter 7: Breaks -->
+    <section class="chapter" id="ch-breaks" aria-labelledby="ch7-h">
+      <p class="chapter__kicker">Chapter 7. Spot the breaks</p>
+      <h2 class="chapter__hook chapter__hook--md" id="ch7-h">Every partner breaks your pattern somewhere. This one broke ours in three places.</h2>
+      <p class="chapter__lead">A mail-order pharmacy joined the platform. Can you spot the breaks? Tap the markers.</p>
+      <div class="flow" id="flow"></div>
+      <p class="flow__found" id="flow-found" aria-live="polite">0 of 3 found</p>
+      <div class="flow__ship" id="flow-ship" hidden>
+        <p>How it shipped: idempotent webhooks, two-step patient matching, ops alerts on match failures, and about 24 merged PRs. I wrote the launch plan and ran production tests with the customer and API teams.</p>
       </div>
     </section>
 
-    <!-- Case study -->
-    <section class="sect sect--loose" id="case" aria-labelledby="case-h">
-      <div class="sect__head">
-        <h2 id="case-h">Finding 15,800 settlements a campaign missed</h2>
-      </div>
-      <div class="case">
-        <div class="story">
-          <p>A polio campaign only works if it reaches every child. When I picked up the Geographic Coverage Support System in 2022, supervisors spent about six hours after each campaign working out which settlements no team had reached.</p>
-          <p>With WHO, NEOC, and the Gates Foundation, we digitized boundaries for 6,000+ administrative areas and put 69,000+ vaccinators on a live map. Then we built missed-settlement detection, geospatial QA, and dashboards for supervisors. Later we added an ML model that reads GPS traces to find where each team starts its day.</p>
-          <p>The review now takes under 30 minutes. The system flagged 15,800+ unvaccinated settlements, and follow-up campaigns reached 5,000+ children in them. WHO adopted it to monitor polio campaigns.</p>
-        </div>
-        <figure class="case__chart" aria-labelledby="case-cap">
-          <figcaption id="case-cap">Time to find missed settlements after a campaign</figcaption>
-          <div class="bar-row">
-            <span class="bar-label">Before</span>
-            <div class="bar-track"><div class="cbar cbar--before" style="--w: 100%"></div></div>
-            <span class="bar-value">~6 hours</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label">With GCSS</span>
-            <div class="bar-track"><div class="cbar cbar--after" style="--w: 8.3%"></div></div>
-            <span class="bar-value">&lt; 30 min</span>
-          </div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Pull quote -->
-    <figure class="pull">
-      <blockquote>The best products are built by those who feel the pain.</blockquote>
-      <figcaption>From something I wrote on <a href="https://medium.com/@ebtihaj316/" rel="noopener" target="_blank">Medium</a>. It's why I spend so much time in the field.</figcaption>
-    </figure>
-
-    <!-- Field work -->
-    <section class="sect" id="field" aria-labelledby="field-h">
-      <div class="sect__head">
-        <h2 id="field-h">Building for polio teams</h2>
-        <p>Most of this work happened with WHO, the Gates Foundation, and Pakistan's National Emergency Operations Centre. Vaccinators and supervisors use these tools in the field, often with weak signal, so the apps work offline first.</p>
-      </div>
-
-      <div class="filters" role="group" aria-label="Filter projects">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" data-filter="gis" aria-pressed="false">GIS</button>
-        <button type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
-        <button type="button" data-filter="data" aria-pressed="false">Data and ML</button>
-        <button type="button" data-filter="interop" aria-pressed="false">Interoperability</button>
-      </div>
-
-      <ul class="projects" id="projects">
-        <li class="proj" data-tags="mobile data">
-          <button class="proj__head" type="button" aria-expanded="true">
-            <span class="proj__name">Digital Information System for Polio</span>
-            <span class="proj__meta">2024–2025 with WHO, NEOC</span>
-            <span class="proj__stat">40%+ better data timeliness</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>Vaccinators used to count on paper tally sheets. DISP moves that count onto offline-first Android and web apps, with checks built in for supervisors.</p>
-            <ul class="detail">
-              <li>I ran user research with vaccinators, area in-charges, and union council medical officers.</li>
-              <li>We piloted in the field and reshaped the backlog after each round.</li>
-              <li>Pilot districts saw data timeliness and accuracy improve by over 40%.</li>
-              <li>It's now scaling to a national rollout.</li>
-            </ul>
-          </div></div>
-        </li>
-        <li class="proj" data-tags="data mobile">
-          <button class="proj__head" type="button" aria-expanded="false">
-            <span class="proj__name">VaxiSure smart cold chain</span>
-            <span class="proj__meta">2024–2025 with MoITT, NEOC, EPI Balochistan</span>
-            <span class="proj__stat">Up to 25% less vaccine wastage</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>Vaccine carriers that report on themselves. Sensors log temperature, location, and every time the lid opens. A dashboard shows breaches as they happen.</p>
-            <ul class="detail">
-              <li>I wrote the sensor specification and ran pilots with NEOC, DEOC Islamabad, and EPI Balochistan.</li>
-              <li>The pilots caught several cold chain breaches early enough to fix them.</li>
-              <li>I wrote the proposal to roll out 180 devices across 36 districts.</li>
-            </ul>
-          </div></div>
-        </li>
-        <li class="proj" data-tags="data gis">
-          <button class="proj__head" type="button" aria-expanded="false">
-            <span class="proj__name">Team support centre detection</span>
-            <span class="proj__meta">2022–2024 with WHO Pakistan, NEOC</span>
-            <span class="proj__stat">95%+ of centres found automatically</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>Where does a vaccination team actually start its day? An ML model reads GPS traces and finds out.</p>
-            <ul class="detail">
-              <li>I worked with data scientists on detecting when teams arrive and leave.</li>
-              <li>I designed geofencing that timestamps every arrival and departure.</li>
-              <li>We compared detected centres with declared ones. The gap showed where reporting was off.</li>
-              <li>The model became a core part of GCSS.</li>
-            </ul>
-          </div></div>
-        </li>
-        <li class="proj" data-tags="interop">
-          <button class="proj__head" type="button" aria-expanded="false">
-            <span class="proj__name">Family planning DAK integration</span>
-            <span class="proj__meta">2025–now with Pathfinder, Sindh Health Department</span>
-            <span class="proj__stat">FHIR exchange design</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>Getting WHO's family planning digital adaptation kit to talk to Sindh's client record and EMR systems.</p>
-            <ul class="detail">
-              <li>I defined the FHIR exchange for family planning encounters and client records.</li>
-              <li>We aligned data dictionaries and clinical terms with the health department.</li>
-              <li>I planned pilots and integration tests across selected facilities.</li>
-            </ul>
-          </div></div>
-        </li>
-        <li class="proj" data-tags="gis">
-          <button class="proj__head" type="button" aria-expanded="false">
-            <span class="proj__name">BlueLines catchment mapping</span>
-            <span class="proj__meta">Environmental surveillance pilot</span>
-            <span class="proj__stat">Upstream poliovirus sources</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>When a sewage sample tests positive, where did the virus come from? This GIS pilot traced catchments upstream, which helped authorities place sampling sites and aim their outbreak response.</p>
-          </div></div>
-        </li>
-        <li class="proj" data-tags="data interop">
-          <button class="proj__head" type="button" aria-expanded="false">
-            <span class="proj__name">WHO IDIMS technical audit</span>
-            <span class="proj__meta">With WHO</span>
-            <span class="proj__stat">Architecture redesign</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>I audited how data moves through WHO's integrated data system and specified fixes for how it talks to partner systems.</p>
-          </div></div>
-        </li>
-        <li class="proj" data-tags="gis mobile">
-          <button class="proj__head" type="button" aria-expanded="false">
-            <span class="proj__name">xLATS</span>
-            <span class="proj__meta">Location analysis for AgriTech</span>
-            <span class="proj__stat">Farm data platform</span>
-          </button>
-          <div class="proj__body"><div class="proj__inner">
-            <p>A side trip into agriculture. AgriTech startups use xLATS to run field operations, onboard farmers, and keep their farm maps in one place.</p>
-          </div></div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Prototypes -->
-    <section class="sect" id="builds" aria-labelledby="builds-h">
-      <div class="sect__head">
-        <h2 id="builds-h">Things I built this year</h2>
-        <p>When an idea is hard to explain, I build a rough version and put it in front of people.</p>
-      </div>
+    <!-- Chapter 8: Prototypes -->
+    <section class="chapter" id="ch-demo" aria-labelledby="ch8-h">
+      <p class="chapter__kicker">Chapter 8. Demo beats debate</p>
+      <h2 class="chapter__hook chapter__hook--md" id="ch8-h">Some ideas lose in a meeting and win in a demo.</h2>
+      <p class="chapter__lead">So I build the demo. Two from this year:</p>
       <div class="builds">
         <article class="build">
           <div class="build__art build__art--poly" aria-hidden="true">
             <svg viewBox="0 0 200 120"><path class="poly" d="M20 90 L48 30 L102 22 L150 44 L178 96 L110 104 Z"/><g class="handles"><circle cx="20" cy="90" r="4"/><circle cx="48" cy="30" r="4"/><circle cx="102" cy="22" r="4"/><circle class="drag" cx="150" cy="44" r="5"/><circle cx="178" cy="96" r="4"/><circle cx="110" cy="104" r="4"/></g></svg>
           </div>
           <h3>Microplanning boundary editor</h3>
-          <p>A vaccination microplan is only as good as its union council boundaries. This lets an admin drag a boundary into place on the map. Every edit lands in an append-only audit log, so each change has a record. KML in, GeoJSON out.</p>
+          <p>A vaccination microplan is only as good as its boundaries. Admins drag a union council boundary into place. Every edit lands in an append-only audit log.</p>
           <p class="build__stack">Leaflet, Geoman, Node.js, Express</p>
         </article>
         <article class="build">
@@ -333,123 +290,158 @@
             <svg viewBox="0 0 200 120"><g class="rings"><circle cx="70" cy="60" r="34"/><circle cx="130" cy="60" r="34"/><circle cx="100" cy="36" r="34"/></g><circle class="pulse" cx="100" cy="66" r="5"/></svg>
           </div>
           <h3>One Health dashboard</h3>
-          <p>Animal health, food safety, and environment teams each track disease on their own. Here they report into one view for CCHF, brucellosis, and rabies, and an alerts feed links signals across sectors.</p>
+          <p>Animal health, food safety, and environment teams report into one view for CCHF, brucellosis, and rabies. An alerts feed links signals across sectors.</p>
           <p class="build__stack">React, Express, JSON data store</p>
         </article>
       </div>
     </section>
 
-    <!-- Career -->
-    <section class="sect sect--loose" id="career" aria-labelledby="career-h">
-      <div class="sect__head">
-        <h2 id="career-h">Where I've worked</h2>
-      </div>
-      <ol class="timeline">
-        <li class="role">
-          <div class="role__when">2022–now</div>
-          <div class="role__what">
-            <h3>Senior product manager, Rayn Group</h3>
-            <p>I lead product across digital health, GIS, and analytics. One week that means a national immunization program. The next it means a US pharmacy platform. I usually have 8+ initiatives running and spend a lot of time with engineers on API contracts and integration design.</p>
-            <ul class="detail">
-              <li>Delivered SMART on FHIR and HL7 integrations with Epic and Cerner.</li>
-              <li>Leading three regulatory integrations at once: pharmacy prior authorization, a shared payer messaging layer, and medical prior authorization.</li>
-              <li>Built HIPAA-aligned data flows and standard API contracts with engineering and compliance.</li>
-              <li>Helped win a $150,000 WHO project through discovery and proposal work.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="role">
-          <div class="role__when">2016–2022</div>
-          <div class="role__what">
-            <h3>Government innovation lead, Code for Pakistan</h3>
-            <p>Code for Pakistan placed technologists inside government departments. I led product for that work and directed 60 engineers who took 30+ public services online for 900,000+ citizens.</p>
-            <ul class="detail">
-              <li>Launched Pakistan's first provincial open data portal, on CKAN, with 6,000+ datasets.</li>
-              <li>Co-wrote the KP Open Data Strategy with the KP Performance Management and Reforms Unit.</li>
-              <li>Saved government offices 57,000+ processing hours a year.</li>
-              <li>Trained 300+ government officials.</li>
-              <li>Shipped a business registration system that cut record lookups from days to seconds.</li>
-              <li>Built a disaster relief data system for PDMA and a grants system for the Minority Affairs Department.</li>
-              <li>Mapped Billion Tree Tsunami plantation sites with the Open Knowledge Foundation.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="role">
-          <div class="role__when">2015–2016</div>
-          <div class="role__what">
-            <h3>Business innovation officer, The Nerd Camp</h3>
-            <p>My first product role. I built roadmaps from market research and customer feedback, and three launches drove about 20% revenue growth.</p>
-          </div>
-        </li>
-        <li class="role">
-          <div class="role__when">2014–2015</div>
-          <div class="role__what">
-            <h3>Software engineer, Sweet Pixel Studios</h3>
-            <p>Where I started. I wrote mobile games in Unity and C# with Firebase analytics, and our titles held a 4.5+ rating on Google Play and the App Store.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Toolkit -->
-    <section class="sect sect--split" id="toolkit" aria-labelledby="toolkit-h">
-      <div class="sect__head">
-        <h2 id="toolkit-h">What I work with</h2>
-      </div>
-      <dl class="kit">
-        <div><dt>Standards</dt><dd>FHIR R4, SMART on FHIR, HL7, NCPDP SCRIPT, RTPB, X12 278, RxNorm</dd></div>
-        <div><dt>Product</dt><dd>Discovery, PRDs, roadmaps, pilot design, phased rollouts, OKRs, Scrum</dd></div>
-        <div><dt>Data and GIS</dt><dd>SQL, PostgreSQL, PostGIS, QGIS, ArcGIS, Python, CKAN</dd></div>
-        <div><dt>Tools</dt><dd>Jira, Confluence, Notion, ClickUp, Figma, Postman, Amplitude, Looker Studio</dd></div>
-        <div><dt>Compliance</dt><dd>HIPAA-aligned data flows, CMS-0057-F planning</dd></div>
-      </dl>
-    </section>
-
-    <section class="sect sect--split" id="talks" aria-labelledby="talks-h">
-      <div class="sect__head">
-        <h2 id="talks-h">Where I've spoken</h2>
-      </div>
-      <ul class="talks">
-        <li><span class="talks__y">2020</span><span>Co-wrote “Civic fellowships: a framework for civic technology innovation in Pakistan” for an ACM CSCW workshop.</span></li>
-        <li><span class="talks__y">2020</span><span>Spoke on building policy for open and inclusive governance at the g0v Summit in Taiwan.</span></li>
-        <li><span class="talks__y">2020</span><span>Led a session on civic tech responses to COVID-19 at the Code for All Summit.</span></li>
-        <li><span class="talks__y">2017</span><span>Presented the impact of civic tech projects in Pakistan at The Impacts of Civic Technology Conference in Taiwan.</span></li>
+    <!-- Chapter 9: Rewind -->
+    <section class="chapter chapter--rewind" id="ch-rewind" aria-labelledby="ch9-h">
+      <p class="rewind__year" aria-hidden="true"><span id="rewind-year">2026</span></p>
+      <p class="chapter__kicker">Chapter 9. Rewind to 2016</p>
+      <h2 class="chapter__hook" id="ch9-h">57,000 hours.</h2>
+      <p class="chapter__lead">That's the time we gave back to government offices every year. One registration system alone cut record lookups from days to seconds.</p>
+      <figure class="people" aria-labelledby="people-cap">
+        <div class="people__grid" id="people" aria-hidden="true"></div>
+        <figcaption id="people-cap">About 27 people working full time for a year. Each figure is one person at 2,080 hours.</figcaption>
+      </figure>
+      <ul class="tiles">
+        <li><strong>60</strong> engineers I directed at Code for Pakistan</li>
+        <li><strong>30+</strong> public services taken online</li>
+        <li><strong>900,000+</strong> citizens served</li>
+        <li><strong>6,000+</strong> datasets on Pakistan's first provincial open data portal</li>
+        <li><strong>300+</strong> government officials trained</li>
+        <li><strong>2</strong> talks in Taiwan, plus an ACM CSCW workshop paper</li>
       </ul>
     </section>
 
-    <section class="sect sect--split" id="education" aria-labelledby="edu-h">
+    <!-- Chapter 10: Confession -->
+    <section class="chapter chapter--confess" id="ch-confession" aria-labelledby="ch10-h">
+      <p class="chapter__kicker">Chapter 10. The confession</p>
+      <h2 class="chapter__hook chapter__hook--md" id="ch10-h">I once shipped a feature I knew was wrong.</h2>
+      <p class="chapter__lead">Leadership insisted. I caved. I still think about it. Now I bring the data and say no earlier.</p>
+      <a class="link" href="https://medium.com/@ebtihaj316/why-saying-yes-can-be-a-pms-biggest-mistake-eccc851bfd40" rel="noopener" target="_blank">Read the full story on Medium</a>
+    </section>
+
+    <!-- Chapter 11: Origins -->
+    <section class="chapter chapter--small" id="ch-origin" aria-labelledby="ch11-h">
+      <p class="chapter__kicker">Chapter 11. Where it started</p>
+      <h2 class="chapter__hook chapter__hook--sm" id="ch11-h">Before all this, I made mobile games.</h2>
+      <p class="chapter__lead">Unity, C#, and Firebase analytics. Players rated our titles 4.5+ on Google Play and the App Store. It was my first time shipping to real users.</p>
+    </section>
+
+    <!-- Full record -->
+    <section class="sect" id="record" aria-labelledby="record-h">
       <div class="sect__head">
-        <h2 id="edu-h">Education</h2>
+        <h2 id="record-h">The full record</h2>
+        <p>Every role and major project since 2014. Hover a bar for details.</p>
       </div>
-      <ul class="talks">
-        <li><span class="talks__y">2020</span><span>MS computer science, University of Engineering and Technology, Peshawar. CGPA 3.8.</span></li>
-        <li><span class="talks__y">2018</span><span>Scrum Master certification, International Scrum Institute.</span></li>
-        <li><span class="talks__y">2014</span><span>BS computer science, University of Engineering and Technology, Peshawar. CGPA 3.9.</span></li>
+      <figure class="gantt" aria-labelledby="gantt-cap">
+        <div class="gantt__chart" id="gantt"></div>
+        <figcaption id="gantt-cap" class="sr-only">Timeline of roles and projects from 2014 to 2026</figcaption>
+      </figure>
+      <ul class="legend" aria-label="Legend">
+        <li><span class="sw sw--ehr"></span>Health</li>
+        <li><span class="sw sw--rx"></span>Civic tech</li>
+        <li><span class="sw sw--payer"></span>Product</li>
+        <li><span class="sw sw--core"></span>Games</li>
       </ul>
+
+      <div class="record">
+        <div class="record__col">
+          <h3>More projects</h3>
+          <ul class="more">
+            <li><b>Family planning DAK integration</b> FHIR exchange between WHO's family planning kit and Sindh's client record and EMR systems, with Pathfinder. 2025 to now.</li>
+            <li><b>BlueLines</b> A GIS pilot that traced poliovirus catchments upstream of positive sewage samples.</li>
+            <li><b>WHO IDIMS audit</b> Data flow audit and interoperability fixes for WHO's integrated data system.</li>
+            <li><b>xLATS</b> Field operations and farm mapping platform for AgriTech startups.</li>
+            <li><b>Business registration</b> Record lookups cut from days to seconds for KP's Directorate of Industries.</li>
+            <li><b>PDMA disaster relief</b> Mobile data collection and a live dashboard for post-disaster assessments.</li>
+            <li><b>Minority Affairs grants</b> Eligibility checks and duplicate prevention for grant distribution.</li>
+            <li><b>Billion Tree Tsunami mapping</b> Plantation sites mapped with open GIS tools, with the Open Knowledge Foundation.</li>
+          </ul>
+        </div>
+        <div class="record__col">
+          <h3>Toolkit</h3>
+          <div class="chips">
+            <span>FHIR R4</span><span>SMART on FHIR</span><span>HL7</span><span>NCPDP SCRIPT</span><span>RTPB</span><span>X12 278</span><span>RxNorm</span><span>HIPAA</span>
+            <span>SQL</span><span>PostgreSQL</span><span>PostGIS</span><span>QGIS</span><span>ArcGIS</span><span>Python</span><span>CKAN</span>
+            <span>Jira</span><span>Confluence</span><span>Notion</span><span>Figma</span><span>Postman</span><span>Amplitude</span>
+          </div>
+          <h3>Education</h3>
+          <ul class="talks">
+            <li><span class="talks__y">2020</span><span>MS computer science, UET Peshawar. CGPA 3.8.</span></li>
+            <li><span class="talks__y">2018</span><span>Scrum Master certification, International Scrum Institute.</span></li>
+            <li><span class="talks__y">2014</span><span>BS computer science, UET Peshawar. CGPA 3.9.</span></li>
+          </ul>
+          <h3>Talks and papers</h3>
+          <ul class="talks">
+            <li><span class="talks__y">2020</span><span>“Civic fellowships: a framework for civic technology innovation in Pakistan,” ACM CSCW workshop.</span></li>
+            <li><span class="talks__y">2020</span><span>Open and inclusive governance, g0v Summit, Taiwan.</span></li>
+            <li><span class="talks__y">2020</span><span>Civic tech responses to COVID-19, Code for All Summit.</span></li>
+            <li><span class="talks__y">2017</span><span>Impact of civic tech in Pakistan, Impacts of Civic Technology Conference, Taiwan.</span></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Contact -->
     <section class="contact" id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Got a messy integration or a hard rollout?</h2>
-      <p>I'd like to hear about it. I'm open to senior and technical product manager roles in health tech, working remotely.</p>
+      <h2 id="contact-h">Got a messy integration or a rollout that keeps slipping?</h2>
+      <p>Send me the problem. I'm open to senior and technical product manager roles in health tech, working remotely.</p>
       <div class="contact__row">
-        <button class="copy" type="button" id="copy-email" data-email="ebtihaj316@gmail.com">
+        <button class="copy js-copy" type="button" data-email="ebtihaj316@gmail.com">
           <span class="copy__text">ebtihaj316@gmail.com</span>
           <span class="copy__hint" aria-live="polite">Copy</span>
         </button>
         <a class="link" href="https://www.linkedin.com/in/ebtihajkhan/" rel="noopener" target="_blank">LinkedIn</a>
         <a class="link" href="https://github.com/ebtihaj-khan" rel="noopener" target="_blank">GitHub</a>
         <a class="link" href="https://medium.com/@ebtihaj316/" rel="noopener" target="_blank">Medium</a>
-        <button class="link" type="button" id="print">Print resume</button>
+        <a class="link" href="resume.pdf" download>Resume PDF</a>
       </div>
     </section>
+
+    <!-- Print-only resume -->
+    <article class="print-resume" aria-hidden="true">
+      <header>
+        <h1>Ebtihaj Khan</h1>
+        <p>Senior product manager. Islamabad, Pakistan. Remote.<br>ebtihaj316@gmail.com | linkedin.com/in/ebtihajkhan | ebtihaj-khan.github.io</p>
+      </header>
+      <h2>Summary</h2>
+      <p>Product manager with 8+ years in public health, GIS, and US healthcare interoperability. Led GCSS, the WHO and Gates Foundation platform that tracked 69,000+ vaccinators and flagged 15,800+ missed settlements. Owns the integration roadmap for a US virtual pharmacy across EHR, pharmacy, and payer systems.</p>
+      <h2>Experience</h2>
+      <h3>Senior product manager, Rayn Group <span>Feb 2022 to now</span></h3>
+      <ul>
+        <li>Own the integration roadmap for Foundation Health, a US virtual pharmacy, across 8+ concurrent initiatives.</li>
+        <li>Delivered SMART on FHIR and HL7 integrations with Epic and Cerner, plus Surescripts RxTransfer and Amazon Pharmacy routing.</li>
+        <li>Lead three regulatory integrations: pharmacy prior authorization (NCPDP SCRIPT), a shared NCPDP layer for RTPB and formulary, and medical prior authorization (X12 278).</li>
+        <li>Planned a compendia service on RxCUI that consolidates five medication lookups. Led vendor exits from Zoho Desk and Feathery, including about 1M migrated events.</li>
+        <li>Led GCSS for WHO, NEOC, and the Gates Foundation: 6,000+ boundaries, 69,000+ vaccinators, missed-settlement review cut from about 6 hours to under 30 minutes, 5,000+ children vaccinated in flagged areas.</li>
+        <li>Led DISP, offline-first polio data apps, with 40%+ better timeliness and accuracy. Led VaxiSure IoT cold chain pilots, with up to 25% less potential wastage. Led an ML model that finds 95%+ of team support centres from GPS traces.</li>
+      </ul>
+      <h3>Government innovation lead, Code for Pakistan <span>Oct 2016 to Jan 2022</span></h3>
+      <ul>
+        <li>Directed 60 engineers who took 30+ public services online for 900,000+ citizens, saving 57,000+ hours a year.</li>
+        <li>Launched Pakistan's first provincial open data portal (CKAN, 6,000+ datasets) and co-wrote the KP Open Data Strategy. Trained 300+ officials.</li>
+      </ul>
+      <h3>Business innovation officer, The Nerd Camp <span>Oct 2015 to Sep 2016</span></h3>
+      <ul><li>Built roadmaps from market research. Three launches drove about 20% revenue growth.</li></ul>
+      <h3>Software engineer, Sweet Pixel Studios <span>Apr 2014 to Oct 2015</span></h3>
+      <ul><li>Built Unity and C# mobile games with Firebase analytics. Titles held a 4.5+ store rating.</li></ul>
+      <h2>Education</h2>
+      <p>MS computer science, UET Peshawar, 2014 to 2020, CGPA 3.8. BS computer science, UET Peshawar, 2010 to 2014, CGPA 3.9. Scrum Master certification, 2018.</p>
+      <h2>Skills</h2>
+      <p>FHIR, SMART on FHIR, HL7, NCPDP SCRIPT, RTPB, X12 278, RxNorm, HIPAA-aligned data flows. SQL, PostgreSQL, PostGIS, QGIS, Python. Discovery, PRDs, roadmaps, pilots, phased rollouts. Jira, Confluence, Notion, Figma, Postman, Amplitude.</p>
+      <h2>Talks</h2>
+      <p>ACM CSCW workshop paper, 2020. g0v Summit, Taiwan, 2020. Code for All Summit, 2020. Impacts of Civic Technology Conference, Taiwan, 2017.</p>
+    </article>
   </main>
 
   <footer class="foot">
     <p>Built in plain HTML, CSS, and canvas. Updated October 2026.</p>
   </footer>
 
-  <!-- Command menu -->
   <dialog class="palette" id="palette" aria-label="Command menu">
     <input type="text" id="palette-input" placeholder="Jump to a section or run a command" autocomplete="off" aria-controls="palette-list">
     <ul id="palette-list" role="listbox"></ul>
@@ -457,5 +449,6 @@
 
   <script src="assets/orb.js" defer></script>
   <script src="assets/main.js" defer></script>
+  <script src="assets/story.js" defer></script>
 </body>
 </html>

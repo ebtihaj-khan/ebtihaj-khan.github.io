@@ -27,12 +27,21 @@
       navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
+  const navFor = { top: '', evidence: 'evidence', 'ch-gcss': 'ch-gcss', 'ch-gps': 'ch-gcss', 'ch-cold': 'ch-gcss', 'ch-paper': 'ch-gcss', 'ch-switch': 'ch-gcss', 'ch-calls': 'ch-calls', 'ch-breaks': 'ch-calls', 'ch-demo': 'ch-gcss', 'ch-rewind': 'ch-gcss', 'ch-confession': 'ch-gcss', 'ch-origin': 'ch-gcss', record: 'record', contact: 'contact' };
   $$('main > section[id]').forEach((el) => spy.observe(el));
-  const navFor = { top: '', now: 'now', playbook: 'now', calls: 'now', case: 'field', field: 'field', builds: 'field', career: 'career', toolkit: 'career', talks: 'career', education: 'career', contact: 'contact' };
+
+  // Reading progress
+  const prog = $('#progress');
+  const onScroll = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // Theme
   const themeBtn = $('#theme');
-  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = () => root.dataset.theme !== 'light';
   const toggleTheme = () => withTransition(() => {
     const next = isDark() ? 'light' : 'dark';
     root.dataset.theme = next;
@@ -41,22 +50,21 @@
   });
   themeBtn.addEventListener('click', toggleTheme);
 
-  // Reading length
-  const viewBtns = $$('.view-switch button');
-  const setView = (v) => withTransition(() => {
-    if (v === 'short') root.dataset.view = 'short'; else delete root.dataset.view;
-    viewBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
-    store.set('view', v);
-  });
-  viewBtns.forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
-  if (root.dataset.view === 'short') viewBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === 'short')));
-
   // Orb lens
   const notes = {
-    idle: "Right now it's 1,725 points. That's one for every 40 vaccinators GCSS tracks during a campaign.",
-    field: "Now it's a campaign map. Each point is a settlement. The amber ones are settlements a team missed, and they're where follow-up teams go first.",
-    interop: "Now it's a pharmacy platform. The hub talks to ten partner systems, and the moving points are messages: prescriptions, prior authorizations, benefit checks.",
-    civic: "Now it's thirty clusters, one for each government service my teams at Code for Pakistan took online."
+    idle: ['1,725 points. One for every 40 vaccinators GCSS tracks in a campaign.'],
+    field: ['A campaign map. Each point is a settlement. Amber points are settlements a team missed.', '#ch-gcss', 'Read how we found them'],
+    interop: ['A pharmacy platform. The hub talks to ten partner systems. Moving points are messages.', '#ch-switch', 'See the ten systems'],
+    civic: ['Thirty clusters. One for each government service my teams took online.', '#ch-rewind', 'See the 57,000 hours']
+  };
+  const setNote = (shape) => {
+    const [text, href, label] = notes[shape];
+    note.textContent = text + ' ';
+    if (href) {
+      const a = document.createElement('a');
+      a.href = href; a.textContent = label;
+      note.appendChild(a);
+    }
   };
   const lensBtns = $$('.lens__options button');
   const note = $('#lens-note');
@@ -66,7 +74,7 @@
     b.setAttribute('aria-pressed', String(on));
     const shape = on ? b.dataset.shape : 'idle';
     window.Orb && window.Orb.setShape(shape);
-    note.textContent = notes[shape];
+    setNote(shape);
   }));
 
   // Count up the proof numbers once
@@ -220,21 +228,22 @@
   const roleObs = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-seen'); });
   }, { rootMargin: '0px 0px -35% 0px' });
-  $$('.role, .case__chart').forEach((r) => roleObs.observe(r));
+  $$('.bars, .viz, .people, .tiles').forEach((r) => roleObs.observe(r));
 
   // Copy email
-  const copyBtn = $('#copy-email');
-  const copyEmail = async () => {
-    const hint = $('.copy__hint', copyBtn);
+  const email = 'ebtihaj316@gmail.com';
+  const copyEmail = async (btn) => {
+    const target = btn && btn.querySelector ? (btn.querySelector('.copy__hint') || btn) : null;
+    const before = target ? target.textContent : '';
     try {
-      await navigator.clipboard.writeText(copyBtn.dataset.email);
-      hint.textContent = 'Copied';
+      await navigator.clipboard.writeText(email);
+      if (target) target.textContent = 'Copied';
     } catch (e) {
-      location.href = 'mailto:' + copyBtn.dataset.email;
+      location.href = 'mailto:' + email;
     }
-    setTimeout(() => { hint.textContent = 'Copy'; }, 1800);
+    if (target) setTimeout(() => { target.textContent = before; }, 1800);
   };
-  copyBtn.addEventListener('click', copyEmail);
+  $$('.js-copy').forEach((b) => b.addEventListener('click', () => copyEmail(b)));
 
   // Print: open every collapsed item first, then restore
   let closed = [];
@@ -243,26 +252,27 @@
     closed.forEach((d) => (d.open = true));
   });
   addEventListener('afterprint', () => closed.forEach((d) => (d.open = false)));
-  $('#print').addEventListener('click', () => print());
 
   // Command menu
   const palette = $('#palette'), input = $('#palette-input'), list = $('#palette-list');
   const go = (id) => () => document.getElementById(id).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   const commands = [
-    { label: "What's on my desk right now", hint: 'Section', run: go('now') },
-    { label: 'From first call to go-live', hint: 'Section', run: go('playbook') },
-    { label: 'The calls behind the work', hint: 'Section', run: go('calls') },
-    { label: 'Finding missed settlements', hint: 'Section', run: go('case') },
-    { label: 'Building for polio teams', hint: 'Section', run: go('field') },
-    { label: 'Things I built this year', hint: 'Section', run: go('builds') },
-    { label: 'Career', hint: 'Section', run: go('career') },
-    { label: "Where I've spoken", hint: 'Section', run: go('talks') },
+    { label: 'Hiring for a skill? Check the evidence', hint: 'Section', run: go('evidence') },
+    { label: 'Chapter 1. The missed settlements', hint: 'Story', run: go('ch-gcss') },
+    { label: 'Chapter 2. The GPS truth', hint: 'Story', run: go('ch-gps') },
+    { label: 'Chapter 3. The box that reports on itself', hint: 'Story', run: go('ch-cold') },
+    { label: 'Chapter 4. Paper to phone', hint: 'Story', run: go('ch-paper') },
+    { label: 'Chapter 5. The switch to US healthcare', hint: 'Story', run: go('ch-switch') },
+    { label: 'Chapter 6. Your call', hint: 'Story', run: go('ch-calls') },
+    { label: 'Chapter 7. Spot the breaks', hint: 'Story', run: go('ch-breaks') },
+    { label: 'Chapter 8. Demo beats debate', hint: 'Story', run: go('ch-demo') },
+    { label: 'Chapter 9. Rewind to 2016', hint: 'Story', run: go('ch-rewind') },
+    { label: 'Chapter 10. The confession', hint: 'Story', run: go('ch-confession') },
+    { label: 'The full record', hint: 'Section', run: go('record') },
     { label: 'Contact', hint: 'Section', run: go('contact') },
-    { label: 'Copy email address', hint: 'Action', run: copyEmail },
+    { label: 'Download the resume PDF', hint: 'Action', run: () => { location.href = 'resume.pdf'; } },
+    { label: 'Copy email address', hint: 'Action', run: () => copyEmail() },
     { label: 'Switch color theme', hint: 'Action', run: toggleTheme },
-    { label: 'Show the short version', hint: 'Action', run: () => setView('short') },
-    { label: 'Show the full story', hint: 'Action', run: () => setView('full') },
-    { label: 'Print resume', hint: 'Action', run: () => print() },
     { label: 'Open LinkedIn', hint: 'Link', run: () => open('https://www.linkedin.com/in/ebtihajkhan/', '_blank', 'noopener') },
     { label: 'Open GitHub', hint: 'Link', run: () => open('https://github.com/ebtihaj-khan', '_blank', 'noopener') }
   ];
@@ -271,7 +281,7 @@
     list.innerHTML = '';
     if (!shown.length) {
       const li = document.createElement('li');
-      li.innerHTML = '<span>No match. Try “career” or “email”.</span>';
+      li.innerHTML = '<span>No match. Try “chapter” or “email”.</span>';
       list.appendChild(li);
       return;
     }
