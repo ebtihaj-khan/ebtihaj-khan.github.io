@@ -36,6 +36,7 @@
     services: { name: 'Government services at Code for Pakistan', when: '2016 to 2022', proof: '60 engineers, 30+ services, 900,000+ citizens.', href: '#ch-rewind' },
     pdma: { name: 'PDMA disaster relief', when: '2016 to 2022', proof: 'Mobile data collection and a live dashboard after disasters.', href: '#record' },
     trees: { name: 'Billion Tree Tsunami map', when: '2021', proof: 'Open Data Day hack day on an OKFN mini-grant. Mapped plantation sites from a WWF report.', href: '#ch-trees' },
+    undp4rf: { name: 'UNDP 4RF Digital Platform', when: '2025 to now', proof: 'Flood recovery monitoring for UNDP and the Ministry of Planning.', href: '#ch-4rf' },
     rayn: { name: 'Rayn Group portfolio', when: '2022 to now', proof: '8+ concurrent initiatives on one platform.', href: '#ch-switch' }
   };
   const skills = [
@@ -43,13 +44,13 @@
     ['NCPDP and pharmacy', ['epa', 'ncpdp', 'rx', 'mailorder', 'compendia']],
     ['Prior authorization', ['epa', 'medpa', 'ncpdp']],
     ['Vendor migration', ['zoho', 'forms']],
-    ['GIS', ['gcss', 'bluelines', 'editor', 'xlats', 'trees']],
+    ['GIS', ['gcss', 'undp4rf', 'bluelines', 'editor', 'xlats', 'trees']],
     ['ML and analytics', ['tsc', 'gcss', 'onehealth']],
     ['IoT', ['vaxisure']],
-    ['Offline mobile', ['disp', 'pdma']],
+    ['Offline mobile', ['disp', 'undp4rf', 'pdma']],
     ['Open data', ['portal', 'trees']],
     ['Team leadership', ['services', 'rayn']],
-    ['Field research and pilots', ['disp', 'vaxisure', 'fpdak']],
+    ['Field research and pilots', ['disp', 'undp4rf', 'vaxisure', 'fpdak']],
     ['HIPAA and compliance', ['ehr', 'ncpdp']]
   ];
   const skillWrap = $('#evidence-skills'), out = $('#evidence-out');
@@ -260,6 +261,7 @@
       { t: 'VaxiSure', s: 2024, e: 2026, k: 'ehr', d: 'IoT cold chain. Up to 25% less potential wastage.' },
       { t: 'DISP', s: 2024, e: 2026, k: 'ehr', d: 'Offline-first polio data. 40%+ better timeliness.' },
       { t: 'Family planning DAK', s: 2025, e: 2026.8, k: 'ehr', d: 'FHIR exchange design with Pathfinder.' },
+      { t: 'UNDP 4RF platform', s: 2025.5, e: 2026.8, k: 'ehr', d: 'Flood recovery monitoring for UNDP and MoPDSI.' },
       { t: 'Foundation Health integrations', s: 2025, e: 2026.8, k: 'ehr', d: '10 partner systems on a US virtual pharmacy.' }
     ];
     const pct = (y) => ((y - START) / (END - START)) * 100;
