@@ -7,15 +7,29 @@
   <meta name="description" content="Ebtihaj Khan is a senior product manager. His team built the map that found 15,800 settlements a national polio campaign missed. Now he runs US healthcare integrations.">
   <meta property="og:title" content="15,800 settlements. One map. Ebtihaj Khan, product manager.">
   <meta property="og:description" content="Public health, GIS, and US healthcare interoperability. Eight years of shipped product work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ebtihaj-khan.github.io/">
+  <meta property="og:image" content="https://ebtihaj-khan.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="15,800 settlements. Ebtihaj Khan, senior product manager.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="15,800 settlements. One map. Ebtihaj Khan, product manager.">
+  <meta name="twitter:description" content="Public health, GIS, and US healthcare interoperability. Eight years of shipped product work.">
+  <meta name="twitter:image" content="https://ebtihaj-khan.github.io/og-image.png">
+  <link rel="canonical" href="https://ebtihaj-khan.github.io/">
   <meta name="theme-color" content="#0E1620">
   <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Ebtihaj Khan", "jobTitle": "Senior product manager", "url": "https://ebtihaj-khan.github.io/", "email": "mailto:ebtihaj316@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Islamabad", "addressCountry": "PK"}, "worksFor": {"@type": "Organization", "name": "Rayn Group"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Engineering and Technology, Peshawar"}, "knowsAbout": ["Product management", "FHIR", "HL7", "NCPDP SCRIPT", "X12 278", "GIS", "Public health"], "sameAs": ["https://www.linkedin.com/in/ebtihajkhan/", "https://github.com/ebtihaj-khan", "https://medium.com/@ebtihaj316"]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
   <script>
     document.documentElement.classList.add('js');
     try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try { if (localStorage.getItem('motion') === 'still' || matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('is-still'); } catch (e) {}
   </script>
 </head>
 <body>
@@ -33,6 +47,7 @@
     </nav>
     <div class="bar__tools">
       <a class="pill-btn" href="resume.pdf" download>Resume PDF</a>
+      <button class="pill-btn motion" type="button" id="motion" aria-pressed="false"><svg class="motion__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg><span class="motion__label">Pause motion</span></button>
       <button class="icon-btn" type="button" id="theme" aria-label="Switch color theme">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
       </button>
@@ -92,7 +107,7 @@
       <h2 id="proof-h" class="sr-only">Results</h2>
       <ol class="proof__list">
         <li><span class="proof__n" data-count="69000">69,000+</span><span class="proof__t">vaccinators on one live map</span></li>
-        <li><span class="proof__n">6 h <span class="proof__arrow" aria-label="down to">→</span> 30 min</span><span class="proof__t">to find a campaign's missed settlements</span></li>
+        <li><span class="proof__n">6 h <span class="proof__arrow" aria-hidden="true">→</span><span class="sr-only"> down to </span> 30 min</span><span class="proof__t">to find a campaign's missed settlements</span></li>
         <li><span class="proof__n" data-count="5000">5,000+</span><span class="proof__t">children vaccinated in flagged settlements</span></li>
         <li><span class="proof__n" data-count="10">10</span><span class="proof__t">US partner systems I own on one pharmacy platform</span></li>
       </ol>
@@ -125,7 +140,7 @@
         </ol>
         <figure class="units" aria-labelledby="units-cap">
           <canvas id="units" role="img" aria-label="15,800 dots, one for each missed settlement GCSS flagged"></canvas>
-          <figcaption id="units-cap"><span class="units__count" id="units-count">0</span> settlements flagged. Each dot is one settlement. Each block holds 1,000.</figcaption>
+          <figcaption id="units-cap"><span class="units__count" id="units-count">15,800+</span> settlements flagged. Each dot is one settlement. Each block holds 1,000.</figcaption>
         </figure>
       </div>
 
@@ -158,7 +173,8 @@
         <svg viewBox="0 0 400 300" role="img" aria-labelledby="gps-cap">
           <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" class="grid-line"/></pattern></defs>
           <rect width="400" height="300" fill="url(#grid)"/>
-          <path class="gps-trace" d="M262 214 C240 196 214 200 196 178 S168 132 140 126 S96 104 84 76"/>
+          <mask id="trace-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="300"><path class="gps-mask" pathLength="1" d="M262 214 C240 196 214 200 196 178 S168 132 140 126 S96 104 84 76"/></mask>
+          <path class="gps-trace" mask="url(#trace-mask)" d="M262 214 C240 196 214 200 196 178 S168 132 140 126 S96 104 84 76"/>
           <g class="pin pin--declared" transform="translate(300 92)"><circle r="7"/><text x="14" y="5">Declared</text></g>
           <g class="pin pin--detected" transform="translate(262 214)"><circle r="7"/><text x="14" y="5">Detected</text></g>
           <path class="gap-line" d="M300 92 L262 214"/>
@@ -187,7 +203,7 @@
           <text class="band-t" x="372" y="190" text-anchor="end">Safe range</text>
           <line class="lid" x1="196" y1="30" x2="196" y2="226"/>
           <text class="lid-t" x="202" y="40">Lid opened</text>
-          <path class="temp-line" d="M40 160 L80 152 L120 164 L160 156 L196 150 L214 112 L232 74 L252 64 L272 88 L300 132 L340 150 L380 154"/>
+          <path class="temp-line" pathLength="1" d="M40 160 L80 152 L120 164 L160 156 L196 150 L214 112 L232 74 L252 64 L272 88 L300 132 L340 150 L380 154"/>
           <circle class="alert-dot" cx="252" cy="64" r="6"/>
           <text class="alert-t" x="262" y="58">Breach alert</text>
         </svg>
@@ -225,7 +241,7 @@
 
     <!-- Chapter 5: Switch -->
     <section class="chapter" id="ch-switch" aria-labelledby="ch5-h">
-      <div class="clocks" aria-label="Current time in my two worlds">
+      <div class="clocks" role="group" aria-label="Current time in my two worlds">
         <div><span class="clocks__city">Islamabad</span><span class="clocks__time" data-tz="Asia/Karachi">--:--</span></div>
         <div><span class="clocks__city">New York</span><span class="clocks__time" data-tz="America/New_York">--:--</span></div>
       </div>
@@ -239,7 +255,7 @@
           <span class="imap__hub-name">Foundation Health</span>
           <span class="imap__hub-sub">Virtual pharmacy platform</span>
         </div>
-        <div class="imap__nodes" id="imap-nodes" role="list"></div>
+        <div class="imap__nodes" id="imap-nodes" role="group" aria-label="Partner systems"></div>
         <article class="imap__panel" id="imap-panel" aria-live="polite"></article>
       </div>
       <ul class="legend" aria-label="Legend">
@@ -266,7 +282,7 @@
       <p class="chapter__lead">A mail-order pharmacy joined the platform. Can you spot the breaks? Tap the markers.</p>
       <div class="flow" id="flow"></div>
       <p class="flow__found" id="flow-found" aria-live="polite">0 of 3 found</p>
-      <div class="flow__ship" id="flow-ship" hidden>
+      <div class="flow__ship" id="flow-ship">
         <p>How it shipped: idempotent webhooks, two-step patient matching, ops alerts on match failures, and about 24 merged PRs. I wrote the launch plan and ran production tests with the customer and API teams.</p>
       </div>
     </section>
@@ -298,7 +314,7 @@
 
     <!-- Chapter 9: Rewind -->
     <section class="chapter chapter--rewind" id="ch-rewind" aria-labelledby="ch9-h">
-      <p class="rewind__year" aria-hidden="true"><span id="rewind-year">2026</span></p>
+      <p class="rewind__year" aria-hidden="true"><span id="rewind-year" data-count>2016</span></p>
       <p class="chapter__kicker">Chapter 9. Rewind to 2016</p>
       <h2 class="chapter__hook" id="ch9-h">57,000 hours.</h2>
       <p class="chapter__lead">That's the time we gave back to government offices every year. One registration system alone cut record lookups from days to seconds.</p>
@@ -451,8 +467,8 @@
   </footer>
 
   <dialog class="palette" id="palette" aria-label="Command menu">
-    <input type="text" id="palette-input" placeholder="Jump to a section or run a command" autocomplete="off" aria-controls="palette-list">
-    <ul id="palette-list" role="listbox"></ul>
+    <input type="text" id="palette-input" placeholder="Jump to a section or run a command" autocomplete="off" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="palette-list" aria-label="Search commands">
+    <ul id="palette-list" role="listbox" aria-label="Commands"></ul>
   </dialog>
 
   <script src="assets/orb.js" defer></script>

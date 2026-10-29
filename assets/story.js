@@ -86,10 +86,26 @@
     let seed = 11;
     const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
     for (let i = N - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
-    let shown = reduce ? N : 0, pitch = 0, gap = 10, blockW = 0, blockH = 0, dpr = 1;
+    const still = () => reduce || document.documentElement.classList.contains('is-still');
+    const animate = !still();
+    let shown = animate ? 0 : N, pitch = 0, gap = 10, blockW = 0, blockH = 0, dpr = 1, d = 1;
+    let colors = {};
+    const readColors = () => { colors = { base: css('--line'), hit: css('--amber') }; };
+    readColors();
     const pos = (i) => {
       const b = Math.floor(i / BLOCK), k = i % BLOCK;
       return [(b % PER_ROW) * (blockW + gap) + (k % BC) * pitch, Math.floor(b / PER_ROW) * (blockH + gap) + Math.floor(k / BC) * pitch];
+    };
+    const drawRange = (from, to) => {
+      ctx.fillStyle = colors.hit;
+      for (let k = from; k < to; k++) { const [x, y] = pos(order[k]); ctx.fillRect(x, y, d, d); }
+    };
+    const drawAll = () => {
+      d = Math.max(1, pitch * 0.7);
+      ctx.clearRect(0, 0, units.width, units.height);
+      ctx.fillStyle = colors.base;
+      for (let i = 0; i < N; i++) { const [x, y] = pos(i); ctx.fillRect(x, y, d, d); }
+      drawRange(0, shown);
     };
     const size = () => {
       const r = units.getBoundingClientRect();
@@ -102,27 +118,18 @@
       units.style.height = H + 'px';
       units.width = r.width * dpr; units.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      draw();
-    };
-    const draw = () => {
-      const base = css('--line'), hit = css('--amber');
-      const d = Math.max(1, pitch * 0.7);
-      ctx.clearRect(0, 0, units.width, units.height);
-      ctx.fillStyle = base;
-      for (let i = 0; i < N; i++) { const [x, y] = pos(i); ctx.fillRect(x, y, d, d); }
-      ctx.fillStyle = hit;
-      for (let k = 0; k < shown; k++) { const [x, y] = pos(order[k]); ctx.fillRect(x, y, d, d); }
-      countEl.textContent = fmt.format(shown) + (shown === N ? '+' : '');
+      drawAll();
     };
     new ResizeObserver(size).observe(units);
-    new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    onSeen(units, () => {
-      if (reduce) return draw();
-      const t0 = performance.now(), dur = 2600;
+    new MutationObserver(() => { readColors(); drawAll(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    if (animate) onSeen(units, () => {
+      const t0 = performance.now(), dur = 2000;
       const tick = (now) => {
         const k = Math.min(1, (now - t0) / dur);
-        shown = Math.round(N * (1 - Math.pow(1 - k, 3)));
-        draw();
+        const next = Math.round(N * (1 - Math.pow(1 - k, 3)));
+        drawRange(shown, next);
+        shown = next;
+        countEl.textContent = fmt.format(shown) + (shown === N ? '+' : '');
         if (k < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
@@ -157,7 +164,7 @@
       card.className = 'qcard';
       card.innerHTML = `<p class="qcard__n">${i + 1} of ${quiz.length}</p><h3 class="qcard__q">${esc(item.q)}</h3>
         <div class="qcard__opts">${item.a.map((t, j) => `<button type="button" data-j="${j}">${esc(t)}</button>`).join('')}</div>
-        <div class="qcard__why" hidden><p class="qcard__mine">My call: <strong>${esc(item.a[item.mine])}</strong></p><p>${esc(item.why)}</p></div>`;
+        <div class="qcard__why" tabindex="-1"><div><p class="qcard__mine">My call: <strong>${esc(item.a[item.mine])}</strong></p><p>${esc(item.why)}</p></div></div>`;
       $$('button', card).forEach((b) => b.addEventListener('click', () => {
         if (card.classList.contains('is-done')) return;
         const j = +b.dataset.j;
@@ -168,8 +175,7 @@
           if (x === b) x.classList.add('is-picked');
         });
         const why = $('.qcard__why', card);
-        why.hidden = false;
-        if (!reduce) why.animate([{ opacity: 0, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'none' }], { duration: 360, easing: 'cubic-bezier(.22,1,.36,1)' });
+        requestAnimationFrame(() => why.focus({ preventScroll: true }));
         answered++; if (j === item.mine) matched++;
         if (answered === quiz.length) scoreEl.textContent = `You matched me on ${matched} of ${quiz.length}. ${matched >= 4 ? 'We would get along.' : 'Let’s argue about it over a call.'}`;
       }));
@@ -196,19 +202,18 @@
     steps.forEach((s, i) => {
       const li = document.createElement('li');
       li.className = 'fstep';
-      li.innerHTML = `<button type="button" class="fstep__btn" aria-expanded="false"><span class="fstep__dot" aria-hidden="true">?</span><span class="fstep__t">${esc(s.t)}</span></button><p class="fstep__note" hidden></p>`;
-      const btn = $('button', li), noteEl = $('.fstep__note', li);
+      li.innerHTML = `<button type="button" class="fstep__btn" aria-expanded="false"><span class="fstep__dot" aria-hidden="true">?</span><span class="fstep__t">${esc(s.t)}</span></button><div class="fstep__note"><div><p></p></div></div>`;
+      const btn = $('button', li), noteEl = $('.fstep__note p', li);
       btn.addEventListener('click', () => {
         if (li.classList.contains('is-open')) return;
         li.classList.add('is-open', s.brk ? 'is-break' : 'is-fit');
         btn.setAttribute('aria-expanded', 'true');
         $('.fstep__dot', li).textContent = s.brk ? '!' : '✓';
         noteEl.textContent = (s.brk ? 'Break. ' : 'Fits. ') + (s.brk || s.fit);
-        noteEl.hidden = false;
         if (s.brk) {
           found++;
           foundEl.textContent = `${found} of 3 found`;
-          if (found === 3) { foundEl.textContent = 'All 3 found.'; ship.hidden = false; }
+          if (found === 3) { foundEl.textContent = 'All 3 found.'; ship.classList.add('is-open'); }
         }
       });
       list.appendChild(li);
@@ -217,12 +222,6 @@
   }
 
   /* Rewind year and people */
-  const yearEl = $('#rewind-year');
-  if (yearEl) onSeen($('#ch-rewind'), () => {
-    if (reduce) { yearEl.textContent = '2016'; return; }
-    let y = 2026;
-    const iv = setInterval(() => { y--; yearEl.textContent = y; if (y <= 2016) clearInterval(iv); }, 90);
-  }, 0.2);
   const people = $('#people');
   if (people) {
     const icon = '<svg viewBox="0 0 24 40" aria-hidden="true"><circle cx="12" cy="7" r="6"/><path d="M2 40V22a10 10 0 0 1 20 0v18Z"/></svg>';
@@ -259,9 +258,9 @@
     const ticks = [];
     for (let y = START; y <= END; y += 2) ticks.push(`<span style="left:${pct(y)}%">${y}</span>`);
     gantt.innerHTML = `<div class="g-axis"><span class="g-label"></span><div class="g-track">${ticks.join('')}</div></div><i class="g-now" style="--p:${pct(2026.8) / 100}" aria-hidden="true"></i>` +
-      rows.map((r) => r.g
+      rows.map((r, n) => r.g
         ? `<div class="g-group">${r.g}</div>`
-        : `<div class="g-row"><span class="g-label">${esc(r.t)}</span><div class="g-track"><button type="button" class="g-bar g-bar--${r.k}" style="left:${pct(r.s)}%;width:${pct(r.e) - pct(r.s)}%" aria-label="${esc(r.t)}, ${Math.floor(r.s)} to ${r.e >= 2026.8 ? 'now' : Math.floor(r.e - 0.01)}. ${esc(r.d)}" data-tip="${esc(r.d)}" data-when="${Math.floor(r.s)} to ${r.e >= 2026.8 ? 'now' : Math.floor(r.e - 0.01)}"></button></div></div>`
+        : `<div class="g-row"><span class="g-label">${esc(r.t)}</span><div class="g-track"><button type="button" class="g-bar g-bar--${r.k}" style="left:${pct(r.s)}%;width:${pct(r.e) - pct(r.s)}%;--r:${n}" aria-label="${esc(r.t)}, ${Math.floor(r.s)} to ${r.e >= 2026.8 ? 'now' : Math.floor(r.e - 0.01)}. ${esc(r.d)}" data-tip="${esc(r.d)}" data-when="${Math.floor(r.s)} to ${r.e >= 2026.8 ? 'now' : Math.floor(r.e - 0.01)}"></button></div></div>`
       ).join('') + '<div class="g-tip" id="g-tip" role="tooltip" hidden></div>';
     const tip = $('#g-tip', gantt);
     const showTip = (b) => {

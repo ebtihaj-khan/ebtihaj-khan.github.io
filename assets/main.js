@@ -7,48 +7,65 @@
     get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }
   };
-  const withTransition = (fn) => {
-    if (document.startViewTransition && !reduce && !document.hidden) document.startViewTransition(fn).ready.catch(() => {});
-    else fn();
-  };
-
-  // Load sequence
   root.classList.add('js');
-  requestAnimationFrame(() => requestAnimationFrame(() => $('.hero').classList.add('is-loaded')));
 
   // Sticky bar border and active section
   const bar = $('.bar');
   addEventListener('scroll', () => bar.classList.toggle('is-scrolled', scrollY > 8), { passive: true });
   const navLinks = $$('.bar__nav a');
+  const navFor = { evidence: 'evidence', 'ch-gcss': 'ch-gcss', 'ch-gps': 'ch-gcss', 'ch-cold': 'ch-gcss', 'ch-paper': 'ch-gcss', 'ch-switch': 'ch-gcss', 'ch-calls': 'ch-calls', 'ch-breaks': 'ch-calls', 'ch-demo': 'ch-gcss', 'ch-rewind': 'ch-gcss', 'ch-confession': 'ch-gcss', 'ch-origin': 'ch-gcss', record: 'record', contact: 'contact' };
   const spy = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
-      const id = navFor[e.target.id] ?? e.target.id;
+      const id = navFor[e.target.id] ?? '';
       navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  const navFor = { top: '', evidence: 'evidence', 'ch-gcss': 'ch-gcss', 'ch-gps': 'ch-gcss', 'ch-cold': 'ch-gcss', 'ch-paper': 'ch-gcss', 'ch-switch': 'ch-gcss', 'ch-calls': 'ch-calls', 'ch-breaks': 'ch-calls', 'ch-demo': 'ch-gcss', 'ch-rewind': 'ch-gcss', 'ch-confession': 'ch-gcss', 'ch-origin': 'ch-gcss', record: 'record', contact: 'contact' };
   $$('main > section[id]').forEach((el) => spy.observe(el));
 
-  // Reading progress
-  const prog = $('#progress');
-  const onScroll = () => {
-    const h = document.documentElement.scrollHeight - innerHeight;
-    prog.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
-  };
-  addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Reading progress. CSS scroll timelines drive it where supported; this is the fallback.
+  if (!(window.CSS && CSS.supports('animation-timeline: scroll()'))) {
+    const prog = $('#progress');
+    const onScroll = () => {
+      const h = root.scrollHeight - innerHeight;
+      prog.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   // Theme
-  const themeBtn = $('#theme');
+  const themeMeta = $('meta[name="theme-color"]');
   const isDark = () => root.dataset.theme !== 'light';
-  const toggleTheme = () => withTransition(() => {
+  const syncThemeMeta = () => { themeMeta.content = isDark() ? '#0E1620' : '#EDF1F3'; };
+  const toggleTheme = () => {
     const next = isDark() ? 'light' : 'dark';
     root.dataset.theme = next;
     store.set('theme', next);
+    syncThemeMeta();
     window.Orb && window.Orb.redraw();
+  };
+  $('#theme').addEventListener('click', toggleTheme);
+  syncThemeMeta();
+
+  // Pause motion. Starts paused for visitors who ask for reduced motion.
+  const motionBtn = $('#motion');
+  const linesEl = $('#imap-lines');
+  let mapVisible = false;
+  const isStill = () => root.classList.contains('is-still');
+  const applyMotion = () => {
+    const still = isStill();
+    motionBtn.setAttribute('aria-pressed', String(still));
+    motionBtn.querySelector('.motion__label').textContent = still ? 'Play motion' : 'Pause motion';
+    window.Orb && window.Orb.setStill(still);
+    if (linesEl.pauseAnimations) (still || !mapVisible) ? linesEl.pauseAnimations() : linesEl.unpauseAnimations();
+  };
+  if (reduce || store.get('motion') === 'still') root.classList.add('is-still');
+  motionBtn.addEventListener('click', () => {
+    root.classList.toggle('is-still');
+    store.set('motion', isStill() ? 'still' : 'on');
+    applyMotion();
   });
-  themeBtn.addEventListener('click', toggleTheme);
 
   // Orb lens
   const notes = {
@@ -57,6 +74,7 @@
     interop: ['A pharmacy platform. The hub talks to ten partner systems. Moving points are messages.', '#ch-switch', 'See the ten systems'],
     civic: ['Thirty clusters. One for each government service my teams took online.', '#ch-rewind', 'See the 57,000 hours']
   };
+  const note = $('#lens-note');
   const setNote = (shape) => {
     const [text, href, label] = notes[shape];
     note.textContent = text + ' ';
@@ -67,7 +85,6 @@
     }
   };
   const lensBtns = $$('.lens__options button');
-  const note = $('#lens-note');
   lensBtns.forEach((b) => b.addEventListener('click', () => {
     const on = b.getAttribute('aria-pressed') !== 'true';
     lensBtns.forEach((x) => x.setAttribute('aria-pressed', 'false'));
@@ -77,26 +94,42 @@
     setNote(shape);
   }));
 
-  // Count up the proof numbers once
-  const fmt = new Intl.NumberFormat('en-US');
-  const counters = $$('[data-count]');
-  const countObs = new IntersectionObserver((entries) => {
+  // Rolling figures. The real value stays in the text for screen readers; an aria-hidden copy rolls once.
+  $$('[data-count]').forEach((el) => {
+    const value = el.textContent.trim();
+    el.textContent = '';
+    const sr = document.createElement('span');
+    sr.className = 'sr-only';
+    sr.textContent = value;
+    const vis = document.createElement('span');
+    vis.className = 'roll';
+    vis.setAttribute('aria-hidden', 'true');
+    let col = 0;
+    for (const ch of value) {
+      if (/\d/.test(ch)) {
+        const c = document.createElement('span');
+        c.className = 'roll__col';
+        c.style.setProperty('--d', ch);
+        c.style.setProperty('--i', col++);
+        c.innerHTML = '0123456789'.split('').map((n) => `<span>${n}</span>`).join('');
+        vis.appendChild(c);
+      } else {
+        const s = document.createElement('span');
+        s.className = 'roll__ch';
+        s.textContent = ch;
+        vis.appendChild(s);
+      }
+    }
+    el.append(sr, vis);
+  });
+  const rollObs = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
-      countObs.unobserve(e.target);
-      if (reduce) return;
-      const el = e.target, end = +el.dataset.count, suffix = el.textContent.includes('+') ? '+' : '';
-      const t0 = performance.now(), dur = 1400;
-      const tick = (now) => {
-        const k = Math.min(1, (now - t0) / dur);
-        const v = Math.round(end * (1 - Math.pow(1 - k, 4)));
-        el.textContent = fmt.format(v) + (k === 1 ? suffix : '');
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
+      rollObs.unobserve(e.target);
+      e.target.classList.add('is-rolled');
     });
-  }, { threshold: 0.6 });
-  counters.forEach((c) => countObs.observe(c));
+  }, { rootMargin: '0px 0px -12% 0px' });
+  $$('[data-count]').forEach((el) => rollObs.observe(el));
 
   // Integration map
   const systems = [
@@ -123,18 +156,17 @@
   ];
   const kindName = { ehr: 'Clinical records', rx: 'Pharmacy and fulfillment', payer: 'Payer and benefits', core: 'Internal platform' };
 
-  const map = $('#imap'), nodesEl = $('#imap-nodes'), linesEl = $('#imap-lines'), panel = $('#imap-panel'), hub = $('#imap-hub');
+  const map = $('#imap'), nodesEl = $('#imap-nodes'), panel = $('#imap-panel');
   const NS = 'http://www.w3.org/2000/svg';
   let active = null;
 
-  systems.forEach((s, i) => {
+  systems.forEach((s) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'node node--' + s.kind;
     b.textContent = s.name;
-    b.setAttribute('role', 'listitem');
     b.setAttribute('aria-pressed', 'false');
-    b.addEventListener('click', () => select(s.id));
+    b.addEventListener('click', (e) => select(s.id, e.detail === 0));
     b.addEventListener('mouseenter', () => highlight(s.id));
     b.addEventListener('mouseleave', () => highlight(active));
     s.btn = b;
@@ -168,6 +200,7 @@
       }
     });
     highlight(active);
+    applyMotion();
   }
 
   function highlight(id) {
@@ -185,50 +218,41 @@
       <p class="p-hint">Use the arrow keys to move between systems.</p>`;
   }
 
-  function select(id, focus) {
+  // Keyboard changes swap instantly. Pointer clicks get a short fade.
+  function select(id, fromKeyboard) {
     const s = systems.find((x) => x.id === id);
     active = id;
     systems.forEach((x) => x.btn.setAttribute('aria-pressed', String(x.id === id)));
     highlight(id);
-    withTransitionPanel(() => render(s));
-    if (focus) s.btn.focus();
-  }
-  function withTransitionPanel(fn) {
-    if (reduce || !panel.animate) return fn();
-    panel.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(6px)' }], { duration: 140, easing: 'ease-in' })
-      .finished.then(() => {
-        fn();
-        panel.animate([{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' });
-      });
+    render(s);
+    if (!fromKeyboard && !reduce && panel.animate) {
+      panel.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], { duration: 150, easing: 'cubic-bezier(.22,1,.36,1)' });
+    }
   }
   nodesEl.addEventListener('keydown', (e) => {
     if (!['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(e.key)) return;
     e.preventDefault();
     const i = systems.findIndex((s) => s.id === active);
     const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1;
-    select(systems[(i + d + systems.length) % systems.length].id, true);
+    const next = systems[(i + d + systems.length) % systems.length];
+    select(next.id, true);
+    next.btn.focus();
   });
   active = 'epa';
   systems.forEach((x) => x.btn.setAttribute('aria-pressed', String(x.id === active)));
   render(systems.find((s) => s.id === active));
   new ResizeObserver(layout).observe(map);
+  new IntersectionObserver(([e]) => { mapVisible = e.isIntersecting; applyMotion(); }).observe(map);
 
-  // Project accordions and filters
-  $$('.proj__head').forEach((h) => h.addEventListener('click', () => {
-    h.setAttribute('aria-expanded', String(h.getAttribute('aria-expanded') !== 'true'));
-  }));
-  const filterBtns = $$('.filters button');
-  filterBtns.forEach((b) => b.addEventListener('click', () => withTransition(() => {
-    filterBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    const f = b.dataset.filter;
-    $$('.proj').forEach((p) => { p.hidden = f !== 'all' && !p.dataset.tags.split(' ').includes(f); });
-  })));
-
-  // Timeline: dots fill as each role scrolls into view
-  const roleObs = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-seen'); });
-  }, { rootMargin: '0px 0px -35% 0px' });
-  $$('.bars, .viz, .people, .tiles').forEach((r) => roleObs.observe(r));
+  // Reveal graphics once, when they are about 88% down the viewport
+  const seenObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      seenObs.unobserve(e.target);
+      e.target.classList.add('is-seen');
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  $$('.bars, .viz, .people, .tiles, .gantt, .build__art, .flow').forEach((el) => seenObs.observe(el));
 
   // Copy email
   const email = 'ebtihaj316@gmail.com';
@@ -244,14 +268,6 @@
     if (target) setTimeout(() => { target.textContent = before; }, 1800);
   };
   $$('.js-copy').forEach((b) => b.addEventListener('click', () => copyEmail(b)));
-
-  // Print: open every collapsed item first, then restore
-  let closed = [];
-  addEventListener('beforeprint', () => {
-    closed = $$('details:not([open])');
-    closed.forEach((d) => (d.open = true));
-  });
-  addEventListener('afterprint', () => closed.forEach((d) => (d.open = false)));
 
   // Command menu
   const palette = $('#palette'), input = $('#palette-input'), list = $('#palette-list');
@@ -273,6 +289,7 @@
     { label: 'Download the resume PDF', hint: 'Action', run: () => { location.href = 'resume.pdf'; } },
     { label: 'Copy email address', hint: 'Action', run: () => copyEmail() },
     { label: 'Switch color theme', hint: 'Action', run: toggleTheme },
+    { label: 'Pause or play motion', hint: 'Action', run: () => motionBtn.click() },
     { label: 'Open LinkedIn', hint: 'Link', run: () => open('https://www.linkedin.com/in/ebtihajkhan/', '_blank', 'noopener') },
     { label: 'Open GitHub', hint: 'Link', run: () => open('https://github.com/ebtihaj-khan', '_blank', 'noopener') }
   ];
@@ -281,12 +298,14 @@
     list.innerHTML = '';
     if (!shown.length) {
       const li = document.createElement('li');
-      li.innerHTML = '<span>No match. Try “chapter” or “email”.</span>';
+      li.textContent = 'No match. Try “chapter” or “email”.';
       list.appendChild(li);
+      input.removeAttribute('aria-activedescendant');
       return;
     }
     shown.forEach((c, i) => {
       const li = document.createElement('li');
+      li.id = 'cmd-' + i;
       li.setAttribute('role', 'option');
       li.setAttribute('aria-selected', String(i === sel));
       li.innerHTML = `<span>${c.label}</span><span>${c.hint}</span>`;
@@ -294,9 +313,17 @@
       li.addEventListener('mousemove', () => { if (sel !== i) { sel = i; draw(); } });
       list.appendChild(li);
     });
+    input.setAttribute('aria-activedescendant', 'cmd-' + sel);
+    const cur = $('#cmd-' + sel);
+    if (cur) cur.scrollIntoView({ block: 'nearest' });
   };
   const runCmd = (c) => { palette.close(); setTimeout(c.run, 50); };
-  const openPalette = () => { input.value = ''; shown = commands; sel = 0; draw(); palette.showModal(); input.focus(); };
+  // The keyboard shortcut opens the menu without animation; a click gets a short one.
+  const openPalette = (fromKeyboard) => {
+    palette.classList.toggle('no-anim', !!fromKeyboard);
+    input.value = ''; shown = commands; sel = 0; draw();
+    palette.showModal(); input.focus();
+  };
   input.addEventListener('input', () => {
     const q = input.value.toLowerCase().trim();
     shown = commands.filter((c) => c.label.toLowerCase().includes(q));
@@ -308,8 +335,10 @@
     if (e.key === 'Enter' && shown[sel]) runCmd(shown[sel]);
   });
   palette.addEventListener('click', (e) => { if (e.target === palette) palette.close(); });
-  $('#open-palette').addEventListener('click', openPalette);
+  $('#open-palette').addEventListener('click', (e) => openPalette(e.detail === 0));
   addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette.open ? palette.close() : openPalette(); }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette.open ? palette.close() : openPalette(true); }
   });
+
+  applyMotion();
 })();

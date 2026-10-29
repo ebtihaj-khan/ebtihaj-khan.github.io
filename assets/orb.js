@@ -113,6 +113,8 @@
   canvas.addEventListener('pointerup', () => { dragging = false; });
 
   let visible = true;
+  // Still: reduced motion, or the visitor pressed Pause motion. The orb then renders single frames.
+  let still = reduce || document.documentElement.classList.contains('is-still');
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) loop(); }).observe(canvas);
 
   const start = performance.now();
@@ -124,7 +126,7 @@
     const morph = t - morphStart;
     const fn = shapes[shape];
 
-    if (!reduce) {
+    if (!still) {
       rotY += 0.0022 + velY;
       velY *= 0.94;
     }
@@ -138,8 +140,8 @@
     const ox = W / 2, oy = H / 2, f = 3.2;
 
     for (const p of pts) {
-      fn(p, reduce ? 0 : t);
-      if (first || reduce) { p.x = p.tx; p.y = p.ty; p.z = p.tz; }
+      fn(p, still ? 0 : t);
+      if (first || still) { p.x = p.tx; p.y = p.ty; p.z = p.tz; }
       else {
         const k = morph < p.delay ? 0.012 : 0.07;
         p.x += (p.tx - p.x) * k; p.y += (p.ty - p.y) * k; p.z += (p.tz - p.z) * k;
@@ -176,7 +178,7 @@
     cancelAnimationFrame(raf);
     const step = (now) => {
       frame(now);
-      if (visible && !reduce) raf = requestAnimationFrame(step);
+      if (visible && !still) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
   }
@@ -187,8 +189,9 @@
       shape = shapes[name] ? name : 'idle';
       morphStart = (performance.now() - start) / 1000;
       for (const p of pts) p.delay = rand() * 0.45;
-      if (reduce) loop();
+      if (still) loop();
     },
+    setStill(v) { still = reduce || v; loop(); },
     redraw: loop
   };
 })();
