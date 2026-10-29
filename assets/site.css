@@ -888,7 +888,7 @@ main > section.chapter--confess::before, main > section.chapter--confess::after 
 .chapter.chapter--confess { padding-top: clamp(24px, 4vw, 44px); }
 
 /* ---------- Writing: printed clippings ---------- */
-.clips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.clips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .clip {
   display: grid; gap: 10px; align-content: start; padding: 22px; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem;
   box-shadow: 0 1px 1px rgb(30 40 88 / .05); transition: transform 180ms var(--ease), border-color 150ms, box-shadow 180ms;
