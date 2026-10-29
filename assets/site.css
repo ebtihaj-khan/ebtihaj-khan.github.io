@@ -906,3 +906,34 @@ main > section.chapter--confess::before, main > section.chapter--confess::after 
   .writing .clip:nth-child(2) { transition-delay: 0s, 0s, 0s, .1s, .1s; } .writing .clip:nth-child(3) { transition-delay: 0s, 0s, 0s, .2s, .2s; }
 }
 @media (max-width: 960px) { .clips { grid-template-columns: 1fr; } .clip:nth-child(n) { transform: none; } }
+
+/* ---------- Product 9: report rows become map bubbles ---------- */
+.beats--tight { margin-top: 22px; }
+.beats--tight li { font-size: 16px; padding-bottom: 18px; }
+.btap__links { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 15px; }
+.btap__svg { width: 100%; height: auto; display: block; overflow: visible; }
+.rep { fill: var(--surface); stroke: var(--line); }
+.band .rep { fill: var(--surface-2); }
+.rep__t { font: 600 10px var(--body); fill: var(--muted); }
+.rr__bg { fill: transparent; }
+.rr__c { fill: color-mix(in oklch, var(--ink) 22%, transparent); }
+.rep__scan { fill: var(--signal); opacity: 0; }
+.kp { fill: color-mix(in oklch, var(--rx) 10%, transparent); stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.bub { fill: color-mix(in oklch, var(--rx) 55%, transparent); stroke: var(--rx); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; }
+.btap__arrow { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 3 3; marker-end: none; }
+.btap__meter { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.btap__bar { flex: 1; height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.btap__bar i { display: block; height: 100%; width: 12.6%; background: var(--rx); border-radius: 4px; transform-origin: left; }
+.btap__pct { font: 800 18px var(--display); font-stretch: 85%; white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.is-still).js .viz--btap:not(.is-seen) .bub { opacity: 0; }
+  html:not(.is-still).js .viz--btap:not(.is-seen) .btap__bar i { transform: scaleX(0); }
+  html:not(.is-still) .viz--btap.is-seen .rep__scan { animation: rep-scan 1.6s cubic-bezier(.33, 1, .68, 1) .7s both; }
+  html:not(.is-still) .viz--btap.is-seen .rr__bg { animation: rr-hit .5s var(--ease) both; animation-delay: calc(.8s + var(--k) * .17s); }
+  html:not(.is-still) .viz--btap.is-seen .bub { animation: bub .5s cubic-bezier(.3, 1.4, .5, 1) both; animation-delay: calc(1s + var(--k) * .17s); }
+  html:not(.is-still) .viz--btap.is-seen .btap__bar i { animation: meter .9s var(--ease) 2.5s both; }
+}
+@keyframes rep-scan { 0% { opacity: 0; transform: translateY(0); } 8% { opacity: 1; } 92% { opacity: 1; } 100% { opacity: 0; transform: translateY(144px); } }
+@keyframes rr-hit { 0% { fill: color-mix(in oklch, var(--signal) 22%, transparent); } 100% { fill: transparent; } }
+@keyframes bub { from { opacity: 0; transform: scale(.2); } }
+@keyframes meter { from { transform: scaleX(0); } }

@@ -35,7 +35,7 @@
     portal: { name: 'KP open data portal', when: '2018 to 2019', proof: 'Pakistan’s first provincial portal, with 6,000+ datasets.', href: '#ch-rewind' },
     services: { name: 'Government services at Code for Pakistan', when: '2016 to 2022', proof: '60 engineers, 30+ services, 900,000+ citizens.', href: '#ch-rewind' },
     pdma: { name: 'PDMA disaster relief', when: '2016 to 2022', proof: 'Mobile data collection and a live dashboard after disasters.', href: '#record' },
-    trees: { name: 'Billion Tree Tsunami mapping', when: '2018 to 2019', proof: 'Plantation sites mapped with open GIS tools.', href: '#record' },
+    trees: { name: 'Billion Tree Tsunami map', when: '2021', proof: 'Open Data Day hack day on an OKFN mini-grant. Mapped plantation sites from a WWF report.', href: '#ch-trees' },
     rayn: { name: 'Rayn Group portfolio', when: '2022 to now', proof: '8+ concurrent initiatives on one platform.', href: '#ch-switch' }
   };
   const skills = [
@@ -254,7 +254,7 @@
       { t: 'Rayn Group', s: 2022.1, e: 2026.8, k: 'ehr', d: 'Senior product manager. Public health and US interoperability.' },
       { g: 'Projects' },
       { t: 'KP open data portal', s: 2018, e: 2020, k: 'rx', d: '6,000+ datasets. Pakistan’s first provincial portal.' },
-      { t: 'Billion Tree mapping', s: 2018, e: 2020, k: 'rx', d: 'Plantation sites mapped with open GIS tools.' },
+      { t: 'Billion Tree Tsunami map', s: 2021.1, e: 2021.6, k: 'rx', d: 'Open Data Day 2021 hack day on an OKFN mini-grant.' },
       { t: 'GCSS', s: 2022.1, e: 2024.7, k: 'ehr', d: '69,000+ vaccinators. 15,800+ missed settlements flagged.' },
       { t: 'Team support centre ML', s: 2022.1, e: 2024.7, k: 'ehr', d: '95%+ of centres found from GPS traces.' },
       { t: 'VaxiSure', s: 2024, e: 2026, k: 'ehr', d: 'IoT cold chain. Up to 25% less potential wastage.' },
