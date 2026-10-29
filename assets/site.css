@@ -119,10 +119,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .bar.is-scrolled { border-bottom-color: var(--line); }
 .wordmark { white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; font: 700 20px var(--display); letter-spacing: -0.02em; text-decoration: none; }
-.wordmark svg { width: 28px; height: 28px; }
-.wordmark .wm-mark { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: .45; }
-.wordmark .wm-card { fill: currentColor; }
-.wordmark .wm-dot { fill: var(--signal); }
+.monogram { position: relative; display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--brand); color: var(--on-brand); font: 800 13px var(--display); letter-spacing: -0.02em; }
+.monogram i { position: absolute; right: 4px; top: 4px; width: 5px; height: 5px; border-radius: 1.5px; background: var(--signal); }
 .bar__nav { display: flex; gap: 22px; margin-right: auto; margin-left: 12px; }
 .bar__nav a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 500; transition: color 150ms; }
 .bar__nav a:hover, .bar__nav a.is-active { color: var(--ink); }

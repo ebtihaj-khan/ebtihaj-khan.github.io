@@ -37,7 +37,7 @@
   // Theme
   const themeMeta = $('meta[name="theme-color"]');
   const isDark = () => root.dataset.theme !== 'light';
-  const syncThemeMeta = () => { themeMeta.content = isDark() ? '#0E1620' : '#EDF1F3'; };
+  const syncThemeMeta = () => { themeMeta.content = isDark() ? '#151a2b' : '#f3f4f7'; };
   const toggleTheme = () => {
     const next = isDark() ? 'light' : 'dark';
     root.dataset.theme = next;
