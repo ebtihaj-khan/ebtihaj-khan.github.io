@@ -286,7 +286,7 @@
     { label: 'Chapter 10. The confession', hint: 'Story', run: go('ch-confession') },
     { label: 'The full record', hint: 'Section', run: go('record') },
     { label: 'Contact', hint: 'Section', run: go('contact') },
-    { label: 'Download the resume PDF', hint: 'Action', run: () => { location.href = 'resume.pdf'; } },
+    { label: 'Download the resume PDF', hint: 'Action', run: () => { location.href = '/resume.pdf'; } },
     { label: 'Copy email address', hint: 'Action', run: () => copyEmail() },
     { label: 'Switch color theme', hint: 'Action', run: toggleTheme },
     { label: 'Pause or play motion', hint: 'Action', run: () => motionBtn.click() },

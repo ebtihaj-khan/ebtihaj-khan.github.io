@@ -86,6 +86,13 @@
     let seed = 11;
     const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
     for (let i = N - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+    // Scan mode: light dots top to bottom, with a little jitter, so they follow a scan beam
+    if (units.dataset.scan !== undefined) {
+      const row = (i) => Math.floor(Math.floor(i / BLOCK) / PER_ROW) * BR + Math.floor((i % BLOCK) / BC);
+      const key = new Float32Array(N);
+      for (let i = 0; i < N; i++) key[i] = row(i) + rand() * 2.5;
+      order.sort((a, b) => key[a] - key[b]);
+    }
     const still = () => reduce || document.documentElement.classList.contains('is-still');
     const animate = !still();
     let shown = animate ? 0 : N, pitch = 0, gap = 10, blockW = 0, blockH = 0, dpr = 1, d = 1;
@@ -123,6 +130,7 @@
     new ResizeObserver(size).observe(units);
     new MutationObserver(() => { readColors(); drawAll(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     if (animate) onSeen(units, () => {
+      units.closest('figure').classList.add('is-scanning');
       const t0 = performance.now(), dur = 2000;
       const tick = (now) => {
         const k = Math.min(1, (now - t0) / dur);

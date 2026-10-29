@@ -557,7 +557,7 @@ button[aria-pressed="true"] .lens__dot { background: var(--teal); box-shadow: 0 
 .is-still .hero__title, .is-still .hero__hook, .is-still .hero__lede, .is-still .hero__cta, .is-still .hero__loop, .is-still .hero__orb { animation: none !important; }
 
 /* Rolling figures: the real value sits in .sr-only; the visual copy rolls once */
-.roll { display: inline-flex; align-items: flex-start; }
+.roll { display: inline-flex; align-items: flex-start; font-variant-numeric: tabular-nums; }
 .roll__col { display: inline-flex; flex-direction: column; height: 1.04em; overflow: hidden; line-height: 1.04; }
 .roll__col > span { display: block; height: 1.04em; transform: translateY(0); transition: transform .8s var(--ease); transition-delay: calc(var(--i) * 50ms); }
 .is-rolled .roll__col > span { transform: translateY(calc(var(--d) * -100%)); }
