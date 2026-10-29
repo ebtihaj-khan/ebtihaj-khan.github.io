@@ -274,16 +274,6 @@
   const go = (id) => () => document.getElementById(id).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   const commands = [
     { label: 'Hiring for a skill? Check the evidence', hint: 'Section', run: go('evidence') },
-    { label: 'Chapter 1. The missed settlements', hint: 'Story', run: go('ch-gcss') },
-    { label: 'Chapter 2. The GPS truth', hint: 'Story', run: go('ch-gps') },
-    { label: 'Chapter 3. The box that reports on itself', hint: 'Story', run: go('ch-cold') },
-    { label: 'Chapter 4. Paper to phone', hint: 'Story', run: go('ch-paper') },
-    { label: 'Chapter 5. The switch to US healthcare', hint: 'Story', run: go('ch-switch') },
-    { label: 'Chapter 6. Your call', hint: 'Story', run: go('ch-calls') },
-    { label: 'Chapter 7. Spot the breaks', hint: 'Story', run: go('ch-breaks') },
-    { label: 'Chapter 8. Demo beats debate', hint: 'Story', run: go('ch-demo') },
-    { label: 'Chapter 9. Rewind to 2016', hint: 'Story', run: go('ch-rewind') },
-    { label: 'Chapter 10. The confession', hint: 'Story', run: go('ch-confession') },
     { label: 'The full record', hint: 'Section', run: go('record') },
     { label: 'Contact', hint: 'Section', run: go('contact') },
     { label: 'Download the resume PDF', hint: 'Action', run: () => { location.href = '/resume.pdf'; } },
@@ -293,6 +283,13 @@
     { label: 'Open LinkedIn', hint: 'Link', run: () => open('https://www.linkedin.com/in/ebtihajkhan/', '_blank', 'noopener') },
     { label: 'Open GitHub', hint: 'Link', run: () => open('https://github.com/ebtihaj-khan', '_blank', 'noopener') }
   ];
+  // Story entries come from each section's label, so every page version lists its own sections
+  const storyCmds = $$('main > section.chapter[id]').map((sec) => {
+    const k = sec.querySelector('.chapter__kicker');
+    const label = k ? [...k.childNodes].map((n) => n.textContent.trim()).filter(Boolean).join('. ') : sec.id;
+    return { label, hint: 'Story', run: go(sec.id) };
+  });
+  commands.splice(1, 0, ...storyCmds);
   let shown = commands, sel = 0;
   const draw = () => {
     list.innerHTML = '';

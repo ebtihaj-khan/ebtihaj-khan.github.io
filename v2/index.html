@@ -41,8 +41,9 @@
   <header class="bar">
     <a class="wordmark" href="#top"><svg viewBox="0 0 28 28" aria-hidden="true"><path class="wm-mark" d="M2 7V2h5M21 2h5v5M26 21v5h-5M7 26H2v-5"/><rect class="wm-card" x="6" y="8" width="16" height="12" rx="2"/><rect class="wm-dot" x="15" y="11" width="4.5" height="4.5" rx=".6"/></svg>Ebtihaj Khan</a>
     <nav class="bar__nav" aria-label="Sections">
+      <a href="#clients">Clients</a>
       <a href="#evidence">Evidence</a>
-      <a href="#ch-gcss">Story</a>
+      <a href="#ch-gcss">Products</a>
       <a href="#ch-calls">Decisions</a>
       <a href="#record">Record</a>
       <a href="#contact">Contact</a>
@@ -63,44 +64,47 @@
     <!-- Hero -->
     <section class="hero" id="top">
       <div class="hero__text">
-        <h1 class="hero__title enter-rise" style="--delay: 0ms"><span class="hero__num" data-count="15800">15,800</span> settlements.</h1>
-        <p class="hero__hook enter-rise" style="--delay: 90ms">Polio campaigns had missed every one. My team built the map that found them.</p>
-        <p class="hero__lede enter-rise" style="--delay: 140ms">I'm Ebtihaj, a senior product manager. I build software for people with hard jobs: vaccinators, pharmacists, and civil servants.</p>
+        <h1 class="hero__title enter-rise" style="--delay: 0ms">I build products for people with hard jobs.</h1>
+        <p class="hero__hook enter-rise" style="--delay: 90ms">Vaccinators in Pakistan. Pharmacists in the US. Civil servants in government offices.</p>
+        <p class="hero__lede enter-rise" style="--delay: 140ms">I'm Ebtihaj, a senior product manager at Rayn Group. I've spent eight years across public health, GIS, and US healthcare interoperability.</p>
         <div class="hero__cta enter-rise" style="--delay: 180ms">
-          <a class="btn btn-primary" href="#ch-gcss">See how we found them</a>
-          <a class="btn btn-secondary" href="#evidence">Check my skills</a>
+          <a class="btn btn-primary" href="#ch-gcss">See my products</a>
+          <a class="btn btn-secondary" href="../resume.pdf" download>Download resume</a>
         </div>
         <p class="hero__loop enter-rise" style="--delay: 220ms">Also on this page: <a class="text-link" href="#ch-confession">the feature I regret shipping.</a></p>
       </div>
 
-      <figure class="gmap enter-settle">
-        <div class="crop-marks">
-          <div class="gmap__sheet">
-            <div class="gmap__head"><b>Campaign coverage map</b><span>Polio campaign, one union council</span></div>
-            <svg class="gmap__svg" viewBox="0 0 480 330" role="img" aria-labelledby="gmap-cap">
-              <defs><pattern id="gm-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" class="gm-gridline"/></pattern></defs>
-              <rect width="480" height="330" fill="url(#gm-grid)"/>
-              <path class="gm-boundary" d="M40 60 L190 30 L330 48 L440 110 L420 250 L260 292 L90 270 L30 170 Z"/>
-              <text class="gm-uc" x="54" y="54">Union council boundary</text>
-              <path class="gm-route gm-route--a" pathLength="1" d="M80 110 L140 90 L205 120 L250 80 L320 100 L390 140"/>
-              <path class="gm-route gm-route--b" pathLength="1" d="M70 220 L130 240 L190 205 L270 240 L350 230 L400 200"/>
-              <path class="gm-route gm-route--follow" pathLength="1" d="M270 240 L300 168"/>
-              <text class="gm-team" x="62" y="96">Team 1</text>
-              <text class="gm-team" x="44" y="244">Team 2</text>
-              <circle class="gm-dot" cx="80" cy="110" r="6" style="--t:0.30s"/><circle class="gm-dot" cx="140" cy="90" r="6" style="--t:0.90s"/><circle class="gm-dot" cx="205" cy="120" r="6" style="--t:1.50s"/><circle class="gm-dot" cx="250" cy="80" r="6" style="--t:2.10s"/><circle class="gm-dot" cx="320" cy="100" r="6" style="--t:2.70s"/><circle class="gm-dot" cx="390" cy="140" r="6" style="--t:3.30s"/><circle class="gm-dot" cx="70" cy="220" r="6" style="--t:0.90s"/><circle class="gm-dot" cx="130" cy="240" r="6" style="--t:1.50s"/><circle class="gm-dot" cx="190" cy="205" r="6" style="--t:2.10s"/><circle class="gm-dot" cx="270" cy="240" r="6" style="--t:2.70s"/><circle class="gm-dot" cx="350" cy="230" r="6" style="--t:3.30s"/><circle class="gm-dot" cx="400" cy="200" r="6" style="--t:3.90s"/>
-              <circle class="gm-ring" cx="300" cy="168" r="17"/>
-              <circle class="gm-missed" cx="300" cy="168" r="6"/>
-              <g class="gm-label gm-label--missed"><rect x="318" y="152" width="70" height="24" rx="12"/><text x="353" y="168" text-anchor="middle">Missed</text></g>
-              <g class="gm-label gm-label--done"><rect x="318" y="152" width="92" height="24" rx="12"/><text x="364" y="168" text-anchor="middle">Revisited ✓</text></g>
-              <g class="gm-scan"><rect x="20" y="24" width="440" height="2"/></g>
-            </svg>
-            <div class="gmap__foot">
-              <span class="gmap__count"><span class="c1">12 of 13 settlements visited</span><span class="c2">13 of 13 settlements visited</span></span>
-              <span class="gmap__key"><i class="k-dot"></i>Visited <i class="k-miss"></i>Missed <i class="k-route"></i>Team route</span>
-            </div>
-          </div>
+      <figure class="avatar enter-settle" aria-labelledby="avatar-cap">
+        <div class="avatar__stage crop-marks">
+          <svg class="avatar__svg" viewBox="0 0 240 240" role="img" aria-label="Cartoon avatar of Ebtihaj waving">
+            <defs><clipPath id="av-clip"><circle cx="120" cy="120" r="108"/></clipPath></defs>
+            <circle class="av-bg" cx="120" cy="120" r="108"/>
+            <circle class="av-ring" cx="120" cy="120" r="114" pathLength="1"/>
+            <g clip-path="url(#av-clip)">
+              <path class="av-shirt" d="M30 250 C30 196 72 176 120 176 C168 176 210 196 210 250 Z"/>
+              <path class="av-collar" d="M104 178 L120 200 L136 178 Z"/>
+              <rect class="av-skin" x="106" y="146" width="28" height="34" rx="10"/>
+              <ellipse class="av-skin" cx="77" cy="112" rx="8" ry="11"/>
+              <ellipse class="av-skin" cx="163" cy="112" rx="8" ry="11"/>
+              <ellipse class="av-skin" cx="120" cy="108" rx="42" ry="48"/>
+              <path class="av-hair" d="M78 104 C74 66 98 50 124 52 C152 54 170 72 164 106 C160 86 150 76 132 74 C118 84 96 84 84 82 C80 88 79 96 78 104 Z"/>
+              <path class="av-brow" d="M96 96 Q104 91 112 95 M128 95 Q136 91 144 96"/>
+              <g class="av-eyes"><ellipse cx="104" cy="108" rx="4.2" ry="5.2"/><ellipse cx="136" cy="108" rx="4.2" ry="5.2"/></g>
+              <path class="av-nose" d="M120 112 Q117 124 122 126"/>
+              <path class="av-smile" d="M104 134 Q120 146 136 134"/>
+            </g>
+            <g class="av-wave">
+              <path class="av-arm" d="M186 214 C202 196 214 180 220 164"/>
+              <g class="av-hand"><rect class="av-skin" x="208" y="134" width="24" height="30" rx="11"/><rect class="av-skin" x="205" y="124" width="7" height="18" rx="3.5"/><rect class="av-skin" x="213" y="118" width="7" height="20" rx="3.5"/><rect class="av-skin" x="221" y="119" width="7" height="19" rx="3.5"/><rect class="av-skin" x="229" y="125" width="6" height="16" rx="3"/></g>
+            </g>
+          </svg>
+          <span class="av-bubble">Hi, I'm Ebtihaj.</span>
+          <span class="av-chip" style="--i:0">Product</span>
+          <span class="av-chip" style="--i:1">GIS</span>
+          <span class="av-chip" style="--i:2">FHIR</span>
+          <span class="av-chip" style="--i:3">Field ops</span>
         </div>
-        <figcaption id="gmap-cap">Illustration. GCSS flags a settlement no team reached, and a team goes back.</figcaption>
+        <figcaption id="avatar-cap">Senior product manager, Rayn Group. Islamabad, working with the US.</figcaption>
       </figure>
     </section>
 
@@ -133,6 +137,19 @@
     </section>
 
 
+    <!-- Clients -->
+    <section class="sect clients reveal" id="clients" aria-labelledby="clients-h">
+      <div class="sect__head">
+        <h2 id="clients-h">Who I've built for</h2>
+        <p>Global health agencies, governments, and a US health tech company.</p>
+      </div>
+      <div class="clients__groups">
+        <div class="cgroup"><h3>Global health and development</h3><ul><li>WHO</li><li>Bill &amp; Melinda Gates Foundation</li><li>World Bank</li><li>Polio Eradication Initiative (PEI)</li><li>Pathfinder International</li><li>Open Knowledge Foundation</li></ul></div>
+        <div class="cgroup"><h3>Government of Pakistan</h3><ul><li>NEOC Pakistan</li><li>EPI Balochistan</li><li>Ministry of IT and Telecom</li><li>Sindh Health Department</li><li>Government of Khyber Pakhtunkhwa (KPITB, PMRU)</li><li>PDMA</li></ul></div>
+        <div class="cgroup"><h3>US health tech</h3><ul><li>Foundation Health</li></ul></div>
+      </div>
+    </section>
+
     <!-- Evidence -->
     <section class="sect" id="evidence" aria-labelledby="evidence-h">
       <div class="sect__head">
@@ -147,9 +164,42 @@
 
     <!-- Chapter 1: GCSS -->
     <section class="chapter" id="ch-gcss" aria-labelledby="ch1-h">
-      <p class="chapter__kicker">Chapter 1. The missed settlements</p>
-      <h2 class="chapter__hook" id="ch1-h">Six hours.</h2>
-      <p class="chapter__lead">That's how long it took to find the settlements one polio campaign missed. A campaign only works if it reaches every child.</p>
+      <p class="chapter__kicker"><span class="tag">Product 1</span>GCSS, Geographic Coverage Support System</p>
+      <div class="p1-head">
+        <div>
+          <h2 class="chapter__hook" id="ch1-h"><span class="num-mark" data-count="15800">15,800</span> settlements.</h2>
+          <p class="chapter__lead">Polio campaigns had missed every one. My team built the map that found them, with WHO, NEOC, and the Gates Foundation. A campaign only works if it reaches every child.</p>
+        </div>
+              <figure class="gmap reveal">
+          <div class="crop-marks">
+            <div class="gmap__sheet">
+              <div class="gmap__head"><b>Campaign coverage map</b><span>Polio campaign, one union council</span></div>
+              <svg class="gmap__svg" viewBox="0 0 480 330" role="img" aria-labelledby="gmap-cap">
+                <defs><pattern id="gm-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" class="gm-gridline"/></pattern></defs>
+                <rect width="480" height="330" fill="url(#gm-grid)"/>
+                <path class="gm-boundary" d="M40 60 L190 30 L330 48 L440 110 L420 250 L260 292 L90 270 L30 170 Z"/>
+                <text class="gm-uc" x="54" y="54">Union council boundary</text>
+                <path class="gm-route gm-route--a" pathLength="1" d="M80 110 L140 90 L205 120 L250 80 L320 100 L390 140"/>
+                <path class="gm-route gm-route--b" pathLength="1" d="M70 220 L130 240 L190 205 L270 240 L350 230 L400 200"/>
+                <path class="gm-route gm-route--follow" pathLength="1" d="M270 240 L300 168"/>
+                <text class="gm-team" x="62" y="96">Team 1</text>
+                <text class="gm-team" x="44" y="244">Team 2</text>
+                <circle class="gm-dot" cx="80" cy="110" r="6" style="--t:0.30s"/><circle class="gm-dot" cx="140" cy="90" r="6" style="--t:0.90s"/><circle class="gm-dot" cx="205" cy="120" r="6" style="--t:1.50s"/><circle class="gm-dot" cx="250" cy="80" r="6" style="--t:2.10s"/><circle class="gm-dot" cx="320" cy="100" r="6" style="--t:2.70s"/><circle class="gm-dot" cx="390" cy="140" r="6" style="--t:3.30s"/><circle class="gm-dot" cx="70" cy="220" r="6" style="--t:0.90s"/><circle class="gm-dot" cx="130" cy="240" r="6" style="--t:1.50s"/><circle class="gm-dot" cx="190" cy="205" r="6" style="--t:2.10s"/><circle class="gm-dot" cx="270" cy="240" r="6" style="--t:2.70s"/><circle class="gm-dot" cx="350" cy="230" r="6" style="--t:3.30s"/><circle class="gm-dot" cx="400" cy="200" r="6" style="--t:3.90s"/>
+                <circle class="gm-ring" cx="300" cy="168" r="17"/>
+                <circle class="gm-missed" cx="300" cy="168" r="6"/>
+                <g class="gm-label gm-label--missed"><rect x="318" y="152" width="70" height="24" rx="12"/><text x="353" y="168" text-anchor="middle">Missed</text></g>
+                <g class="gm-label gm-label--done"><rect x="318" y="152" width="92" height="24" rx="12"/><text x="364" y="168" text-anchor="middle">Revisited ✓</text></g>
+                <g class="gm-scan"><rect x="20" y="24" width="440" height="2"/></g>
+              </svg>
+              <div class="gmap__foot">
+                <span class="gmap__count"><span class="c1">12 of 13 settlements visited</span><span class="c2">13 of 13 settlements visited</span></span>
+                <span class="gmap__key"><i class="k-dot"></i>Visited <i class="k-miss"></i>Missed <i class="k-route"></i>Team route</span>
+              </div>
+            </div>
+          </div>
+          <figcaption id="gmap-cap">Illustration. GCSS flags a settlement no team reached, and a team goes back.</figcaption>
+        </figure>
+      </div>
 
       <div class="ch-grid">
         <ol class="beats">
@@ -177,9 +227,9 @@
     </section>
 
     <!-- Chapter 2: TSC -->
-    <section class="chapter chapter--split" id="ch-gps" aria-labelledby="ch2-h">
+    <section class="chapter chapter--split band" id="ch-gps" aria-labelledby="ch2-h">
       <div class="chapter__text">
-        <p class="chapter__kicker">Chapter 2. The GPS truth</p>
+        <p class="chapter__kicker"><span class="tag">Product 2</span>Team support centre detection</p>
         <h2 class="chapter__hook chapter__hook--md" id="ch2-h">The reports said teams started here. The GPS said otherwise.</h2>
         <p class="chapter__lead">So we let the GPS decide.</p>
         <ul class="facts">
@@ -209,7 +259,7 @@
     <!-- Chapter 3: VaxiSure -->
     <section class="chapter chapter--split chapter--flip" id="ch-cold" aria-labelledby="ch3-h">
       <div class="chapter__text">
-        <p class="chapter__kicker">Chapter 3. The box that reports on itself</p>
+        <p class="chapter__kicker"><span class="tag">Product 3</span>VaxiSure smart cold chain</p>
         <h2 class="chapter__hook chapter__hook--md" id="ch3-h">A warm vaccine looks exactly like a cold one.</h2>
         <p class="chapter__lead">So we built a carrier that reports on itself. It logs temperature, location, and every time someone opens the lid.</p>
         <ul class="facts">
@@ -236,9 +286,9 @@
     </section>
 
     <!-- Chapter 4: DISP -->
-    <section class="chapter chapter--split" id="ch-paper" aria-labelledby="ch4-h">
+    <section class="chapter chapter--split band" id="ch-paper" aria-labelledby="ch4-h">
       <div class="chapter__text">
-        <p class="chapter__kicker">Chapter 4. Paper to phone</p>
+        <p class="chapter__kicker"><span class="tag">Product 4</span>DISP, Digital Information System for Polio</p>
         <h2 class="chapter__hook chapter__hook--md" id="ch4-h">Every tally mark was a child.</h2>
         <p class="chapter__lead">Campaign counts lived on paper tally sheets. Paper is slow to collect and hard to check. We moved the count onto offline-first Android and web apps.</p>
         <ul class="facts">
@@ -266,7 +316,7 @@
           <div><span class="clocks__city">Islamabad</span><span class="clocks__time" data-tz="Asia/Karachi">--:--</span></div>
           <div><span class="clocks__city">New York</span><span class="clocks__time" data-tz="America/New_York">--:--</span></div>
         </div>
-        <p class="chapter__kicker">Chapter 5. The switch</p>
+        <p class="chapter__kicker"><span class="tag">Product 5</span>Foundation Health integrations</p>
         <h2 class="chapter__hook chapter__hook--md" id="ch5-h">Then I switched worlds.</h2>
         <p class="chapter__lead">Every message in US healthcare has a standard. Every standard has exceptions. I own the integration roadmap at Foundation Health, a US virtual pharmacy. Pick a system to see what I did there.</p>
 
@@ -298,8 +348,8 @@
     </section>
 
     <!-- Chapter 6: Quiz -->
-    <section class="chapter" id="ch-calls" aria-labelledby="ch6-h">
-      <p class="chapter__kicker">Chapter 6. Your call</p>
+    <section class="chapter band" id="ch-calls" aria-labelledby="ch6-h">
+      <p class="chapter__kicker"><span class="tag tag--alt">Decisions</span>Calls on the US platform</p>
       <h2 class="chapter__hook chapter__hook--md" id="ch6-h">Five calls. Each had a tempting wrong answer.</h2>
       <p class="chapter__lead">Pick yours. Then see mine.</p>
       <div class="quiz" id="quiz"></div>
@@ -308,7 +358,7 @@
 
     <!-- Chapter 7: Breaks -->
     <section class="chapter" id="ch-breaks" aria-labelledby="ch7-h">
-      <p class="chapter__kicker">Chapter 7. Spot the breaks</p>
+      <p class="chapter__kicker"><span class="tag">Product 6</span>Mail-order pharmacy integration</p>
       <h2 class="chapter__hook chapter__hook--md" id="ch7-h">Every partner breaks your pattern somewhere. This one broke ours in three places.</h2>
       <p class="chapter__lead">A mail-order pharmacy joined the platform. Can you spot the breaks? Tap the markers.</p>
       <div class="flow" id="flow"></div>
@@ -319,8 +369,8 @@
     </section>
 
     <!-- Chapter 8: Prototypes -->
-    <section class="chapter" id="ch-demo" aria-labelledby="ch8-h">
-      <p class="chapter__kicker">Chapter 8. Demo beats debate</p>
+    <section class="chapter band" id="ch-demo" aria-labelledby="ch8-h">
+      <p class="chapter__kicker"><span class="tag">Product 7</span>Prototypes: boundary editor and One Health dashboard</p>
       <h2 class="chapter__hook chapter__hook--md" id="ch8-h">Some ideas lose in a meeting and win in a demo.</h2>
       <p class="chapter__lead">So I build the demo. Two from this year:</p>
       <div class="builds">
@@ -346,7 +396,7 @@
     <!-- Chapter 9: Rewind -->
     <section class="chapter chapter--rewind" id="ch-rewind" aria-labelledby="ch9-h">
       <p class="rewind__year" aria-hidden="true"><span id="rewind-year" data-count>2016</span></p>
-      <p class="chapter__kicker">Chapter 9. Rewind to 2016</p>
+      <p class="chapter__kicker"><span class="tag">Product 8</span>Government digital services, Code for Pakistan</p>
       <h2 class="chapter__hook" id="ch9-h">57,000 hours.</h2>
       <p class="chapter__lead">That's the time we gave back to government offices every year. One registration system alone cut record lookups from days to seconds.</p>
       <figure class="people" aria-labelledby="people-cap">
@@ -365,7 +415,7 @@
 
     <!-- Chapter 10: Confession -->
     <section class="chapter chapter--confess" id="ch-confession" aria-labelledby="ch10-h">
-      <p class="chapter__kicker">Chapter 10. The confession</p>
+      <p class="chapter__kicker"><span class="tag tag--alt">Lesson</span>The feature I regret</p>
       <h2 class="chapter__hook chapter__hook--md" id="ch10-h">I once shipped a feature I knew was wrong.</h2>
       <p class="chapter__lead">Leadership insisted. I caved. I still think about it. Now I bring the data and say no earlier.</p>
       <a class="link" href="https://medium.com/@ebtihaj316/why-saying-yes-can-be-a-pms-biggest-mistake-eccc851bfd40" rel="noopener" target="_blank">Read the full story on Medium</a>
@@ -373,7 +423,7 @@
 
     <!-- Chapter 11: Origins -->
     <section class="chapter chapter--small" id="ch-origin" aria-labelledby="ch11-h">
-      <p class="chapter__kicker">Chapter 11. Where it started</p>
+      <p class="chapter__kicker"><span class="tag tag--alt">Origin</span>Mobile games, Sweet Pixel Studios</p>
       <h2 class="chapter__hook chapter__hook--sm" id="ch11-h">Before all this, I made mobile games.</h2>
       <p class="chapter__lead">Unity, C#, and Firebase analytics. Players rated our titles 4.5+ on Google Play and the App Store. It was my first time shipping to real users.</p>
       <div class="viz viz--stars" role="img" aria-label="Rated 4.5 out of 5 stars"><div class="stars"><div class="stars__fill"></div></div><span class="stars__n">4.5</span></div>
