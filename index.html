@@ -44,9 +44,7 @@
       <a href="#clients">Clients</a>
       <a href="#evidence">Evidence</a>
       <a href="#ch-gcss">Products</a>
-      <a href="#ch-calls">Decisions</a>
       <a href="#writing">Writing</a>
-      <a href="#record">Record</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="bar__tools">
@@ -109,16 +107,6 @@
       </figure>
     </section>
 
-    <!-- Proof -->
-    <section class="proof" aria-labelledby="proof-h">
-      <h2 id="proof-h" class="sr-only">Results</h2>
-      <ol class="proof__list">
-        <li><span class="proof__n" data-count="69000">69,000+</span><span class="proof__t">vaccinators on one live map</span></li>
-        <li><span class="proof__n">6 h <span class="proof__arrow" aria-hidden="true">→</span><span class="sr-only"> down to </span> 30 min</span><span class="proof__t">to find a campaign's missed settlements</span></li>
-        <li><span class="proof__n" data-count="5000">5,000+</span><span class="proof__t">children vaccinated in flagged settlements</span></li>
-        <li><span class="proof__n" data-count="10">10</span><span class="proof__t">US partner systems I own on one pharmacy platform</span></li>
-      </ol>
-    </section>
 
     <!-- Ten-second summary -->
     <section class="summary" aria-labelledby="summary-h">
@@ -349,24 +337,30 @@
     </section>
 
     <!-- Chapter 6: Quiz -->
-    <section class="chapter band" id="ch-calls" aria-labelledby="ch6-h">
-      <p class="chapter__kicker"><span class="tag tag--alt">Decisions</span>Calls on the US platform</p>
-      <h2 class="chapter__hook chapter__hook--md" id="ch6-h">Five calls. Each had a tempting wrong answer.</h2>
-      <p class="chapter__lead">Pick yours. Then see mine.</p>
-      <div class="quiz" id="quiz"></div>
-      <p class="quiz__score" id="quiz-score" aria-live="polite"></p>
-    </section>
 
     <!-- Chapter 7: Breaks -->
-    <section class="chapter" id="ch-breaks" aria-labelledby="ch7-h">
-      <p class="chapter__kicker"><span class="tag">Product 6</span>Mail-order pharmacy integration</p>
-      <h2 class="chapter__hook chapter__hook--md" id="ch7-h">Every partner breaks your pattern somewhere. This one broke ours in three places.</h2>
-      <p class="chapter__lead">A mail-order pharmacy joined the platform. Can you spot the breaks? Tap the markers.</p>
-      <div class="flow" id="flow"></div>
-      <p class="flow__found" id="flow-found" aria-live="polite">0 of 3 found</p>
-      <div class="flow__ship" id="flow-ship">
-        <p>How it shipped: idempotent webhooks, two-step patient matching, ops alerts on match failures, and about 24 merged PRs. I wrote the launch plan and ran production tests with the customer and API teams.</p>
+    <section class="chapter chapter--split" id="ch-breaks" aria-labelledby="ch7-h">
+      <div class="chapter__text">
+        <p class="chapter__kicker"><span class="tag">Product 6</span>Mail-order pharmacy integration</p>
+        <h2 class="chapter__hook chapter__hook--md" id="ch7-h">A new pharmacy partner, live in production.</h2>
+        <p class="chapter__lead">I owned the integration of a mail-order pharmacy into the platform, from the PRD to go-live.</p>
+        <ul class="facts">
+          <li>Wrote the PRD around the three places this partner broke our usual pattern.</li>
+          <li>Mapped every event from prescription approval to shipment.</li>
+          <li>Specified webhook checks, duplicate handling, and alerts when a patient match fails.</li>
+          <li>Ran go-live with production test orders alongside the customer and API teams.</li>
+        </ul>
+        <p class="stat"><strong>~24</strong> merged pull requests to ship it</p>
       </div>
+      <figure class="viz viz--ship crop-marks">
+        <svg class="ship__svg" viewBox="0 0 380 130" role="img" aria-labelledby="ship-cap">
+          <path class="ship__road" d="M40 70 H340"/>
+          <path class="ship__done" pathLength="1" d="M40 70 H340"/>
+          <g class="st" style="--k:0"><circle class="st__dot" cx="40" cy="70" r="13"/><path class="st__tick" d="M34 70 l4 4 l8 -8"/><text x="40" y="104" text-anchor="middle">Rx received</text></g><g class="st" style="--k:1"><circle class="st__dot" cx="140" cy="70" r="13"/><path class="st__tick" d="M134 70 l4 4 l8 -8"/><text x="140" y="104" text-anchor="middle">Patient matched</text></g><g class="st" style="--k:2"><circle class="st__dot" cx="240" cy="70" r="13"/><path class="st__tick" d="M234 70 l4 4 l8 -8"/><text x="240" y="104" text-anchor="middle">Order created</text></g><g class="st" style="--k:3"><circle class="st__dot" cx="340" cy="70" r="13"/><path class="st__tick" d="M334 70 l4 4 l8 -8"/><text x="340" y="104" text-anchor="middle">Shipped</text></g>
+          <g class="parcel"><rect x="-13" y="-34" width="26" height="22" rx="3"/><path d="M-13 -26 H13 M0 -34 V-12"/></g>
+        </svg>
+        <figcaption id="ship-cap">Illustration. An order moves through the integration, and each stage checks off.</figcaption>
+      </figure>
     </section>
 
     <!-- Chapter 8: Prototypes -->
@@ -471,12 +465,6 @@
 
 
     <!-- Chapter 11: Origins -->
-    <section class="chapter chapter--small" id="ch-origin" aria-labelledby="ch11-h">
-      <p class="chapter__kicker"><span class="tag tag--alt">Origin</span>Mobile games, Sweet Pixel Studios</p>
-      <h2 class="chapter__hook chapter__hook--sm" id="ch11-h">Before all this, I made mobile games.</h2>
-      <p class="chapter__lead">Unity, C#, and Firebase analytics. Players rated our titles 4.5+ on Google Play and the App Store. It was my first time shipping to real users.</p>
-      <div class="viz viz--stars" role="img" aria-label="Rated 4.5 out of 5 stars"><div class="stars"><div class="stars__fill"></div></div><span class="stars__n">4.5</span></div>
-    </section>
 
     <!-- Writing -->
     <section class="sect writing reveal" id="writing" aria-labelledby="writing-h">
@@ -512,59 +500,6 @@
       </div>
     </section>
 
-    <!-- Full record -->
-    <section class="sect" id="record" aria-labelledby="record-h">
-      <div class="sect__head">
-        <h2 id="record-h">The full record</h2>
-        <p>Every role and major project since 2014. Hover a bar for details.</p>
-      </div>
-      <figure class="gantt" aria-labelledby="gantt-cap">
-        <div class="gantt__chart" id="gantt"></div>
-        <figcaption id="gantt-cap" class="sr-only">Timeline of roles and projects from 2014 to 2026</figcaption>
-      </figure>
-      <ul class="legend" aria-label="Legend">
-        <li><span class="sw sw--ehr"></span>Health</li>
-        <li><span class="sw sw--rx"></span>Civic tech</li>
-        <li><span class="sw sw--payer"></span>Product</li>
-        <li><span class="sw sw--core"></span>Games</li>
-      </ul>
-
-      <div class="record">
-        <div class="record__col">
-          <h3>More projects</h3>
-          <ul class="more">
-            <li><b>Family planning DAK integration</b> FHIR exchange between WHO's family planning kit and Sindh's client record and EMR systems, with Pathfinder. 2025 to now.</li>
-            <li><b>BlueLines</b> A GIS pilot that traced poliovirus catchments upstream of positive sewage samples.</li>
-            <li><b>WHO IDIMS audit</b> Data flow audit and interoperability fixes for WHO's integrated data system.</li>
-            <li><b>xLATS</b> Field operations and farm mapping platform for AgriTech startups.</li>
-            <li><b>Business registration</b> Record lookups cut from days to seconds for KP's Directorate of Industries.</li>
-            <li><b>PDMA disaster relief</b> Mobile data collection and a live dashboard for post-disaster assessments.</li>
-            <li><b>Minority Affairs grants</b> Eligibility checks and duplicate prevention for grant distribution.</li>
-          </ul>
-        </div>
-        <div class="record__col">
-          <h3>Toolkit</h3>
-          <div class="chips">
-            <span>FHIR R4</span><span>SMART on FHIR</span><span>HL7</span><span>NCPDP SCRIPT</span><span>RTPB</span><span>X12 278</span><span>RxNorm</span><span>HIPAA</span>
-            <span>SQL</span><span>PostgreSQL</span><span>PostGIS</span><span>QGIS</span><span>ArcGIS</span><span>Python</span><span>CKAN</span>
-            <span>Jira</span><span>Confluence</span><span>Notion</span><span>Figma</span><span>Postman</span><span>Amplitude</span>
-          </div>
-          <h3>Education</h3>
-          <ul class="talks">
-            <li><span class="talks__y">2020</span><span>MS computer science, UET Peshawar. CGPA 3.8.</span></li>
-            <li><span class="talks__y">2018</span><span>Scrum Master certification, International Scrum Institute.</span></li>
-            <li><span class="talks__y">2014</span><span>BS computer science, UET Peshawar. CGPA 3.9.</span></li>
-          </ul>
-          <h3>Talks and papers</h3>
-          <ul class="talks">
-            <li><span class="talks__y">2020</span><span>“Civic fellowships: a framework for civic technology innovation in Pakistan,” ACM CSCW workshop.</span></li>
-            <li><span class="talks__y">2020</span><span>Open and inclusive governance, g0v Summit, Taiwan.</span></li>
-            <li><span class="talks__y">2020</span><span>Civic tech responses to COVID-19, Code for All Summit.</span></li>
-            <li><span class="talks__y">2017</span><span>Impact of civic tech in Pakistan, Impacts of Civic Technology Conference, Taiwan.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
     <!-- Contact -->
     <section class="contact" id="contact" aria-labelledby="contact-h">

@@ -14,8 +14,8 @@
   /* Skill evidence */
   const projects = {
     ehr: { name: 'Epic and Cerner integrations', when: '2025 to now', proof: 'Delivered SMART on FHIR and HL7 integrations, including consent patterns and cutover criteria.', href: '#ch-switch' },
-    fpdak: { name: 'Family planning DAK integration', when: '2025 to now', proof: 'Defined the FHIR exchange between the WHO kit and Sindh’s record systems.', href: '#record' },
-    idims: { name: 'WHO IDIMS audit', when: 'Rayn Group', proof: 'Audited data flows and specified interoperability fixes with partner systems.', href: '#record' },
+    fpdak: { name: 'Family planning DAK integration', when: '2025 to now', proof: 'Defined the FHIR exchange between the WHO kit and Sindh’s record systems.', href: '' },
+    idims: { name: 'WHO IDIMS audit', when: 'Rayn Group', proof: 'Audited data flows and specified interoperability fixes with partner systems.', href: '' },
     epa: { name: 'Pharmacy prior authorization', when: '2026 to now', proof: 'Two-vendor routing on NCPDP SCRIPT 2023 that reaches 85%+ of pharmacy-benefit payers.', href: '#ch-calls' },
     ncpdp: { name: 'NCPDP messaging layer', when: '2026 to now', proof: 'One library for prior authorization, RTPB, and formulary ahead of CMS-0057-F.', href: '#ch-calls' },
     medpa: { name: 'Medical prior authorization', when: '2026 to now', proof: 'X12 278 through a clearinghouse, with real-time and batch paths.', href: '#ch-switch' },
@@ -28,13 +28,13 @@
     tsc: { name: 'Team support centre ML', when: '2022 to 2024', proof: 'Found 95%+ of centres automatically from GPS traces.', href: '#ch-gps' },
     vaxisure: { name: 'VaxiSure cold chain', when: '2024 to 2025', proof: 'IoT carriers. Up to 25% less potential wastage in pilots.', href: '#ch-cold' },
     disp: { name: 'DISP', when: '2024 to 2025', proof: 'Offline-first apps. 40%+ better data timeliness and accuracy.', href: '#ch-paper' },
-    bluelines: { name: 'BlueLines', when: 'Rayn Group', proof: 'Traced poliovirus catchments upstream of positive samples.', href: '#record' },
+    bluelines: { name: 'BlueLines', when: 'Rayn Group', proof: 'Traced poliovirus catchments upstream of positive samples.', href: '' },
     editor: { name: 'Boundary editor prototype', when: '2026', proof: 'Drag-to-fix union council boundaries with an audit log.', href: '#ch-demo' },
     onehealth: { name: 'One Health dashboard prototype', when: '2026', proof: 'Cross-sector alerts for CCHF, brucellosis, and rabies.', href: '#ch-demo' },
-    xlats: { name: 'xLATS', when: 'Rayn Group', proof: 'Field operations and farm mapping for AgriTech startups.', href: '#record' },
+    xlats: { name: 'xLATS', when: 'Rayn Group', proof: 'Field operations and farm mapping for AgriTech startups.', href: '' },
     portal: { name: 'KP open data portal', when: '2018 to 2019', proof: 'Pakistan’s first provincial portal, with 6,000+ datasets.', href: '#ch-rewind' },
     services: { name: 'Government services at Code for Pakistan', when: '2016 to 2022', proof: '60 engineers, 30+ services, 900,000+ citizens.', href: '#ch-rewind' },
-    pdma: { name: 'PDMA disaster relief', when: '2016 to 2022', proof: 'Mobile data collection and a live dashboard after disasters.', href: '#record' },
+    pdma: { name: 'PDMA disaster relief', when: '2016 to 2022', proof: 'Mobile data collection and a live dashboard after disasters.', href: '' },
     trees: { name: 'Billion Tree Tsunami map', when: '2021', proof: 'Open Data Day hack day on an OKFN mini-grant. Mapped plantation sites from a WWF report.', href: '#ch-trees' },
     undp4rf: { name: 'UNDP 4RF Digital Platform', when: '2025 to now', proof: 'Flood recovery monitoring for UNDP and the Ministry of Planning.', href: '#ch-4rf' },
     rayn: { name: 'Rayn Group portfolio', when: '2022 to now', proof: '8+ concurrent initiatives on one platform.', href: '#ch-switch' }
@@ -61,7 +61,8 @@
       out.innerHTML = `<p class="evidence__count"><strong>${ids.length}</strong> ${ids.length === 1 ? 'project proves' : 'projects prove'} ${esc(label)}</p>
         <ul class="evidence__list">${ids.map((id) => {
           const p = projects[id];
-          return `<li><a href="${p.href}"><span class="ev-name">${esc(p.name)}</span><span class="ev-when">${esc(p.when)}</span><span class="ev-proof">${esc(p.proof)}</span></a></li>`;
+          const inner = `<span class="ev-name">${esc(p.name)}</span><span class="ev-when">${esc(p.when)}</span><span class="ev-proof">${esc(p.proof)}</span>`;
+          return p.href ? `<li><a href="${p.href}">${inner}</a></li>` : `<li><div class="ev-item">${inner}</div></li>`;
         }).join('')}</ul>`;
       if (!reduce) out.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' });
     };

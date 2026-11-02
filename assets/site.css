@@ -961,3 +961,22 @@ main > section.chapter--confess::before, main > section.chapter--confess::after 
   .bar__nav { gap: 14px; margin-left: 4px; }
   .motion__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
+
+/* ---------- Product 6: an order travels through the integration ---------- */
+.ship__svg { width: 100%; height: auto; display: block; overflow: visible; }
+.ship__road { stroke: var(--line); stroke-width: 3; stroke-dasharray: 6 6; }
+.ship__done { fill: none; stroke: var(--rx); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.st__dot { fill: var(--rx); stroke: var(--surface); stroke-width: 3; transform-box: fill-box; transform-origin: center; }
+.st__tick { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.st text { font: 600 11px var(--body); fill: var(--ink); }
+.parcel { transform: translate(340px, 70px); }
+.parcel rect { fill: var(--payer); } .parcel path { stroke: color-mix(in oklch, var(--payer) 50%, black); stroke-width: 1.5; fill: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.is-still).js .viz--ship:not(.is-seen) .ship__done { stroke-dashoffset: 1; }
+  html:not(.is-still).js .viz--ship:not(.is-seen) :is(.st__dot, .st__tick) { opacity: 0; }
+  html:not(.is-still) .viz--ship.is-seen .parcel { animation: parcel 3s cubic-bezier(.45, 0, .2, 1) .6s both; }
+  html:not(.is-still) .viz--ship.is-seen .ship__done { animation: link 3s cubic-bezier(.45, 0, .2, 1) .6s both; }
+  html:not(.is-still) .viz--ship.is-seen :is(.st__dot, .st__tick) { animation: bub .4s cubic-bezier(.3,1.4,.5,1) both; animation-delay: calc(.6s + var(--k) * 1s); }
+}
+@keyframes parcel { from { transform: translate(40px, 70px); } to { transform: translate(340px, 70px); } }
+.evidence__list .ev-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 12px 14px; border-radius: .8rem; border: 1px dashed var(--line); }

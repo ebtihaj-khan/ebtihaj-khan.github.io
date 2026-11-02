@@ -13,7 +13,7 @@
   const bar = $('.bar');
   addEventListener('scroll', () => bar.classList.toggle('is-scrolled', scrollY > 8), { passive: true });
   const navLinks = $$('.bar__nav a');
-  const navFor = { evidence: 'evidence', 'ch-gcss': 'ch-gcss', 'ch-gps': 'ch-gcss', 'ch-cold': 'ch-gcss', 'ch-paper': 'ch-gcss', 'ch-switch': 'ch-gcss', 'ch-calls': 'ch-calls', 'ch-breaks': 'ch-calls', 'ch-demo': 'ch-gcss', 'ch-rewind': 'ch-gcss', 'ch-confession': 'ch-gcss', 'ch-origin': 'ch-gcss', record: 'record', contact: 'contact' };
+  const navFor = { evidence: 'evidence', 'ch-gcss': 'ch-gcss', 'ch-gps': 'ch-gcss', 'ch-cold': 'ch-gcss', 'ch-paper': 'ch-gcss', 'ch-switch': 'ch-gcss', 'ch-breaks': 'ch-gcss', 'ch-demo': 'ch-gcss', 'ch-rewind': 'ch-gcss', 'ch-confession': 'ch-gcss', 'ch-origin': 'ch-gcss', contact: 'contact' };
   const spy = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
@@ -274,7 +274,6 @@
   const go = (id) => () => document.getElementById(id).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   const commands = [
     { label: 'Hiring for a skill? Check the evidence', hint: 'Section', run: go('evidence') },
-    { label: 'The full record', hint: 'Section', run: go('record') },
     { label: 'Contact', hint: 'Section', run: go('contact') },
     { label: 'Download the resume PDF', hint: 'Action', run: () => { location.href = '/resume.pdf'; } },
     { label: 'Copy email address', hint: 'Action', run: () => copyEmail() },
